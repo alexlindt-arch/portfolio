@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta charset="utf-8">
+  <title>Alexander Lindt — Portfolio (Mobile)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Dancing+Script:wght@600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+  <script src="assets/image-slot.js"></script>
+  <style>
+    html, body { margin:0; padding:0; background:#0E1013; }
+    * { box-sizing:border-box; }
+    a { color:#F8F9FA; }
+    a:hover { color:#F87A55; }
+  </style>
+</helmet>
+
+<div style="width:100%; margin:0; background:#F8F9FA; font-family:'Bricolage Grotesque',sans-serif; color:#0E1013; overflow-x:hidden; position:relative;" data-screen-label="Portfolio Mobile">
+
+  <!-- ============ HEADER ============ -->
+  <div style="position:fixed; top:0; left:0; width:100%; height:64px; z-index:50; display:flex; align-items:center; padding:16px; background:linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,0) 70%);">
+    <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
+      <a href="#hero" style="text-decoration:none; line-height:1; display:inline-flex;"><span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:32px; color:#3355FF; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span></a>
+      <div onClick="{{ openMenu }}" style="width:32px; height:32px; display:flex; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px;">
+        <div style="height:2.5px; background:#F8F9FA; border-radius:2px;"></div>
+        <div style="height:2.5px; background:#F8F9FA; border-radius:2px;"></div>
+        <div style="height:2.5px; background:#F8F9FA; border-radius:2px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 01 HERO ============ -->
+  <section id="hero" data-screen-label="01 Hero" style="position:relative; width:100%; min-height:100vh; background:#F8F9FA; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:url('assets/hero-paper-black.png') center bottom / cover no-repeat;"></div>
+
+    <div style="position:absolute; left:16px; right:16px; top:52%; transform:translateY(-50%); display:flex; flex-direction:column; gap:28px;">
+      <!-- name block -->
+      <div style="display:flex; flex-direction:column; justify-content:center; gap:16px;">
+        <span style="align-self:flex-start; border:1px solid #F8F9FA; border-radius:100px; padding:9px 24px; font-weight:500; font-size:18px; color:#F8F9FA; white-space:nowrap;">{{ t.hello }}</span>
+        <div style="font-weight:700; font-size:clamp(44px,15vw,124px); line-height:100%; color:#F8F9FA; letter-spacing:-1px;">Frontend</div>
+        <div style="font-weight:700; font-size:clamp(44px,15vw,124px); line-height:100%; color:#F8F9FA; text-transform:uppercase; letter-spacing:-1px;">Developer</div>
+      </div>
+      <!-- CTA -->
+      <div style="display:flex; justify-content:flex-end;">
+        <a href="#contact" style="display:inline-flex; align-items:center; justify-content:center; padding:10px 20px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:16px; text-decoration:none; background:rgba(0,0,0,.01); white-space:nowrap; flex:none;" style-hover="background:#3355FF; border-color:#3355FF; box-shadow:2px 4px 0px #F7C518;">{{ t.getInTouch }}</a>
+      </div>
+      <!-- polaroid -->
+      <div style="display:flex; justify-content:center; padding-top:0;">
+        <div style="width:clamp(165px,46vw,230px); background:#F8F9FA; transform:rotate(8deg); box-shadow:0 12px 36px rgba(0,0,0,.5); padding:6.5% 6.5% 0;">
+          <img src="assets/portrait2.jpg" alt="Alexander Lindt" style="width:100%; aspect-ratio:178/186; height:auto; object-fit:cover; object-position:50% 12%; display:block; filter:grayscale(1) contrast(1.05);">
+          <div style="font-family:'Kalam',cursive; font-weight:700; font-size:clamp(22px,6.5vw,32px); color:#0E1013; text-align:center; padding:10px 0 12px; line-height:1.2;">Alex :)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 ABOUT ============ -->
+  <section id="about" data-screen-label="02 About" style="background:#F8F9FA; padding:clamp(56px,17vw,88px) 16px; display:flex; flex-direction:column; gap:40px;">
+    <div style="display:flex; flex-direction:column; gap:32px;">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-weight:500; font-size:18px; text-transform:uppercase; letter-spacing:1px;">{{ t.aboutEyebrow }}</div>
+        <div style="display:flex; flex-direction:column; gap:4px; align-self:flex-start;">
+          <span style="font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:100%;">{{ t.aboutTitle }}</span>
+          <svg width="227" height="14" viewBox="0 0 303 14" fill="none" style="width:227px; height:14px;"><path d="M2 9 C 60 3, 140 12, 200 6 S 290 8, 301 5" stroke="#3355FF" stroke-width="5" stroke-linecap="round"></path></svg>
+        </div>
+      </div>
+      <p style="margin:0; font-size:18px; line-height:22px; font-weight:400;">{{ t.aboutText }}</p>
+      <a href="#contact" style="align-self:flex-end; display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #0E1013; border-radius:100px; box-shadow:2px 4px 0px #FFFFFF; color:#0E1013; font-weight:500; font-size:18px; text-decoration:none; background:rgba(255,255,255,.01); white-space:nowrap; flex:none;" style-hover="background:#F7C518; box-shadow:2px 4px 0px #3355FF;">{{ t.letsTalk }}</a>
+    </div>
+    <!-- ripped paper strips -->
+    <div style="display:flex; flex-direction:column; padding-top:24px;">
+      <div style="position:relative; height:128px; transform:rotate(-4deg); margin-bottom:-24px; z-index:3; background:url('assets/strip-yellow.png'); background-size:100% 100%; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; gap:16px;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F8F9FA" stroke-width="1.6" style="margin-top:-6px;"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+        <span style="font-size:20px; color:#F8F9FA; font-weight:400; margin-top:-6px;">{{ t.basedIn }}</span>
+      </div>
+      <div style="position:relative; height:128px; z-index:2; margin-bottom:-24px; background:url('assets/strip-blue.png'); background-size:100% 100%; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; gap:16px;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F8F9FA" stroke-width="1.6" style="margin-top:-6px;"><path d="M4 19c5 1 5-4 9-4s4 4 7-1"></path><circle cx="4" cy="19" r="1.6"></circle><circle cx="20" cy="13" r="1.6"></circle></svg>
+        <span style="font-size:20px; color:#F8F9FA; font-weight:400; margin-top:-6px;">{{ t.relocate }}</span>
+      </div>
+      <div style="position:relative; height:128px; transform:rotate(4deg); z-index:1; background:url('assets/strip-orange.png'); background-size:100% 100%; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; gap:16px;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#F8F9FA" stroke-width="1.6" style="margin-top:-6px;"><path d="M3 11l9-7 9 7"></path><path d="M5 10v9h14v-9"></path><circle cx="12" cy="14" r="2"></circle><path d="M9 19c0-1.6 1.3-2.5 3-2.5s3 .9 3 2.5"></path></svg>
+        <span style="font-size:20px; color:#F8F9FA; font-weight:400; margin-top:-6px;">{{ t.remote }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 SKILLS ============ -->
+  <section id="skills" data-screen-label="03 Skills" style="position:relative; background:url('assets/skills-paper.png'); background-size:100% 100%; background-repeat:no-repeat; padding:clamp(56px,17vw,88px) 16px clamp(80px,24vw,120px); filter:drop-shadow(0px 4px 8px rgba(0,0,0,.24)); display:flex; flex-direction:column; gap:40px;">
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:32px;">
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <div style="font-weight:500; font-size:18px; text-transform:uppercase; color:#F8F9FA; letter-spacing:1px; text-align:right;">{{ t.stackEyebrow }}</div>
+        <div style="position:relative; display:inline-block; margin-right:4px;">
+          <span style="font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:100%; color:#F8F9FA; white-space:nowrap; position:relative; z-index:1;">{{ t.stackTitle }}</span>
+          <svg style="position:absolute; left:-22px; top:-14px; width:calc(100% + 40px); height:calc(100% + 30px); pointer-events:none;" viewBox="0 0 300 98" preserveAspectRatio="none" fill="none"><path d="M196 10 C 96 2, 12 16, 9 46 C 6 78, 74 94, 158 92 C 244 90, 293 74, 291 46 C 289 18, 216 6, 148 8 C 108 9, 62 14, 34 24" stroke="#F87A55" stroke-width="7" stroke-linecap="round"></path></svg>
+        </div>
+      </div>
+      <div style="width:100%; min-height:200px; background:url('assets/strip-skillset.png') center / 100% 100% no-repeat; padding:44px 28px; display:flex; align-items:center;">
+        <p style="margin:0; font-size:18px; line-height:22px; color:#0E1013;">{{ t.stackText }}</p>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px 12px; padding-top:16px; align-items:start;">
+      <sc-for list="{{ skills }}" as="skill" hint-placeholder-count="0">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+          <div style="width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:22px; color:#F8F9FA; filter:grayscale(1) brightness(1.35); transition:filter .25s, transform .25s;" style-hover="filter:none; transform:scale(1.1);">
+            <span style="display:inline-flex;">{{ skill.iconEl }}</span>
+          </div>
+          <div style="font-size:16px; color:#F8F9FA; text-align:center; line-height:120%;">{{ skill.name }}</div>
+        </div>
+      </sc-for>
+      <div style="grid-column:2/4; justify-self:center; align-self:center; width:clamp(140px,44vw,180px); aspect-ratio:1/1; transform:rotate(4deg); background:url('assets/sticker-peel.png'); background-size:100% 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; filter:drop-shadow(0 8px 16px rgba(0,0,0,.35));">
+        <img src="assets/peel-arrow.png" alt="" style="width:44px; height:36px; object-fit:contain;">
+        <span style="font-family:'Kalam',cursive; font-size:clamp(22px,6vw,28px); line-height:1.15; color:#F8F9FA; text-align:center;">Pull to<br>peel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 PROJECTS ============ -->
+  <section id="projects" data-screen-label="04 Projects" style="background:#F8F9FA; padding:clamp(56px,17vw,88px) 16px; display:flex; flex-direction:column; gap:40px;">
+    <div style="display:flex; flex-direction:column; gap:32px;">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-weight:500; font-size:18px; text-transform:uppercase; letter-spacing:1px;">{{ t.craftEyebrow }}</div>
+        <div style="display:flex; flex-direction:column; gap:4px; align-self:flex-start; width:195px;">
+          <span style="font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:100%;">{{ t.projectsTitle }}</span>
+          <img src="assets/squiggle-yellow.png" alt="" style="width:195px; height:20px; object-fit:contain;">
+        </div>
+      </div>
+      <p style="margin:0; font-size:18px; line-height:22px; text-align:justify;">{{ t.projectsText }}</p>
+    </div>
+
+    <!-- Join -->
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:32px;">
+      <div style="display:flex; flex-direction:column; gap:22px; width:100%;">
+        <div onClick="{{ openJoin }}" style="position:relative; width:100%; cursor:pointer;">
+          <img src="assets/proj-join.png" alt="Join — Kanban Project Management Tool" style="width:100%; height:auto; display:block; transform:scale(1.1); transform-origin:center;">
+          <img src="assets/sticker-featured.png" alt="Featured Project" style="position:absolute; left:0; bottom:0; width:clamp(72px,23vw,100px); height:auto; filter:drop-shadow(0 6px 12px rgba(0,0,0,.25)); z-index:2;">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="font-weight:700; font-size:clamp(20px,5.5vw,26px);">Join</div>
+          <p style="margin:0; font-size:18px; line-height:22px; text-align:justify;">{{ t.projJoin }}</p>
+        </div>
+      </div>
+      <span onClick="{{ openJoin }}" style="display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #0E1013; border-radius:100px; box-shadow:2px 4px 0px #0E1013; color:#0E1013; font-weight:500; font-size:18px; background:rgba(0,0,0,.01); white-space:nowrap; cursor:pointer;" style-hover="background:#F7C518;">{{ t.projectDetails }}</span>
+    </div>
+
+    <!-- El Pollo Loco -->
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:32px;">
+      <div style="display:flex; flex-direction:column; gap:24px; width:100%;">
+        <img onClick="{{ openPollo }}" src="assets/proj-pollo.jpg" alt="El Pollo Loco" style="width:100%; height:244px; object-fit:cover; display:block; border-radius:20px; box-shadow:0 8px 32px rgba(14,16,19,.14); cursor:pointer;">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="font-weight:700; font-size:clamp(20px,5.5vw,26px);">El Pollo Loco</div>
+          <p style="margin:0; font-size:18px; line-height:22px; text-align:justify;">{{ t.projPollo }}</p>
+        </div>
+      </div>
+      <span onClick="{{ openPollo }}" style="display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #0E1013; border-radius:100px; box-shadow:2px 4px 0px #0E1013; color:#0E1013; font-weight:500; font-size:18px; background:rgba(0,0,0,.01); white-space:nowrap; cursor:pointer;" style-hover="background:#F7C518;">{{ t.projectDetails }}</span>
+    </div>
+
+    <!-- BurgerHouse -->
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:24px;">
+      <div style="display:flex; flex-direction:column; gap:32px; width:100%;">
+        <img onClick="{{ openAsCars }}" src="assets/proj-burger.jpg" alt="BurgerHouse" style="width:100%; height:244px; object-fit:cover; display:block; border-radius:20px; box-shadow:0 8px 32px rgba(14,16,19,.14); cursor:pointer;">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="font-weight:700; font-size:clamp(20px,5.5vw,26px);">BurgerHouse</div>
+          <p style="margin:0; font-size:18px; line-height:22px; text-align:justify;">{{ t.projAsCars }}</p>
+        </div>
+      </div>
+      <span onClick="{{ openAsCars }}" style="display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #0E1013; border-radius:100px; box-shadow:2px 4px 0px #0E1013; color:#0E1013; font-weight:500; font-size:18px; background:rgba(0,0,0,.01); white-space:nowrap; cursor:pointer;" style-hover="background:#F7C518;">{{ t.projectDetails }}</span>
+    </div>
+  </section>
+
+  <!-- ============ 05 TESTIMONIALS ============ -->
+  <section id="testimonials" data-screen-label="05 Testimonials" style="background:#F8F9FA; padding:clamp(56px,17vw,88px) 16px; display:flex; flex-direction:column; gap:32px;">
+    <div style="display:flex; flex-direction:column; align-items:flex-end;">
+      <div style="display:flex; justify-content:flex-end; align-items:flex-start; gap:8px;">
+        <img src="assets/arrow-blue.png" alt="" style="width:100px; height:36px; object-fit:contain;">
+        <span style="font-weight:500; font-size:18px; text-transform:uppercase;">{{ t.testiEyebrow }}</span>
+      </div>
+      <div style="font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:100%; text-align:right;">{{ t.testiTitle }}</div>
+    </div>
+    <div style="display:flex; flex-direction:column; padding:0 8px;">
+      <sc-for list="{{ testimonials }}" as="tst" hint-placeholder-count="3">
+        <div data-testi-idx="{{ tst.idx }}" style="box-sizing:border-box; background: {{ tst.cardBg }}; color:#0E1013; padding:24px 24px 28px; display:flex; flex-direction:column; justify-content:space-between; gap:48px; margin:-14px 0; transform: {{ tst.transformNow }}; z-index: {{ tst.zNow }}; filter: {{ tst.filterNow }}; position:relative; transition:transform .3s ease, filter .3s ease;" style-hover="transform: {{ tst.tiltHover }}; z-index:10; filter:drop-shadow(0px 12px 24px rgba(0,0,0,.28));">
+          <p style="margin:0; font-size:18px; line-height:120%;">„{{ tst.quote }}“</p>
+          <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              <span style="font-weight:700; font-size:18px;">{{ tst.name }}</span>
+              <span style="font-weight:500; font-size:16px;">{{ tst.role }}</span>
+            </div>
+            <a href="https://www.linkedin.com/in/alexander-lindt-2134a22a9/" target="_blank" style="display:flex; align-items:center; gap:6px; color:inherit; text-decoration:none; font-weight:500; font-size:18px; white-space:nowrap;" style-hover="color:#3355FF;">
+              <svg width="20" height="20" viewBox="0 0 19 19" fill="currentColor"><path d="M15.0398 0.00551341L2.54132 0.879495C1.03413 0.984888 -0.102075 2.29194 0.00331744 3.79913L0.877328 16.2981C0.982692 17.8048 2.28975 18.941 3.79693 18.8356L16.2955 17.9617C17.8026 17.8563 18.9388 16.5492 18.8335 15.0424L17.9595 2.54351C17.8541 1.03632 16.547 -0.0998794 15.0398 0.00551341ZM7.84884 16.737L5.54441 16.8982L5.02605 9.48525L7.33048 9.32411L7.84884 16.737ZM6.02 8.42C5.27 8.42 4.67 7.8 4.67 7.06C4.67 6.32 5.27 5.73 6.02 5.73C6.77 5.73 7.36 6.32 7.36 7.06C7.36 7.8 6.77 8.42 6.02 8.42ZM16.1681 11.8881L16.4651 16.1345L14.1681 16.2951C14.1681 16.2951 13.8926 12.4628 13.8774 12.245C13.8622 12.0272 13.7248 11.5201 13.7248 11.5201C13.3918 10.6111 12.4684 10.8399 12.4684 10.8399C11.6715 10.8993 11.4609 11.5327 11.4609 11.5327C11.2424 12.0504 11.3441 13.0095 11.3441 13.0095L11.5865 16.4757L9.29825 16.6357L8.77989 9.22276L10.9733 9.06938L11.0449 10.0923C11.0733 10.0807 11.0915 10.0661 11.0915 10.0661C12.2398 8.0243 14.6813 8.92161 14.6813 8.92161C16.1671 9.47768 16.1681 11.8881 16.1681 11.8881Z"></path></svg>
+              <span>{{ t.profile }}</span>
+            </a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ 06 CONTACT ============ -->
+  <section id="contact" data-screen-label="06 Contact" style="position:relative; z-index:10; margin-top:-40px; padding:clamp(84px,26vw,120px) 16px 56px; overflow:hidden;">
+    <div style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; display:flex; flex-direction:column;">
+      <img src="assets/hero-paper-black.png" alt="" style="width:100%; height:auto; transform:scaleY(-1); flex:none;">
+      <div style="flex:1; background:#0A0A0A;"></div>
+    </div>
+    <div style="position:relative; display:flex; flex-direction:column; gap:40px;">
+      <!-- orange logo sticker -->
+      <div style="display:flex; justify-content:flex-end;">
+        <div style="position:relative; width:clamp(110px,30vw,150px); aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle at 38% 32%, #F89A6E 0%, #F87A55 55%, #E4603C 100%); box-shadow:0 8px 20px rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center; transform:rotate(-12deg);">
+          <svg viewBox="0 0 120 120" style="position:absolute; inset:0; width:100%; height:100%;">
+            <defs><path id="badgeArcM" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"></path></defs>
+            <text fill="#0E1013" font-family="'Bricolage Grotesque',sans-serif" font-size="9.5" font-weight="700" letter-spacing="1"><textPath href="#badgeArcM" startOffset="0%">Alexander Lindt - Frontend Developer - </textPath></text>
+          </svg>
+          <span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:clamp(40px,11vw,54px); color:#0E1013; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
+        </div>
+      </div>
+
+      <!-- heading + intro -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-weight:500; font-size:18px; text-transform:uppercase; color:#F8F9FA; letter-spacing:1px;">{{ t.contactEyebrow }}</div>
+        <div style="font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:100%; color:#F8F9FA;">{{ t.contactTitle }}</div>
+        <p style="margin:0; font-size:18px; line-height:22px; color:#F8F9FA; text-align:justify; white-space:pre-line;">{{ t.contactText }}</p>
+      </div>
+
+      <!-- form -->
+      <div style="display:flex; flex-direction:column;">
+        <label style="display:flex; flex-direction:column; gap:8px; padding:16px 24px; border-bottom:1px solid #F7C518;">
+          <span style="font-weight:500; font-size:clamp(20px,6vw,28px); color:#F8F9FA;">{{ t.formName }}</span>
+          <input type="text" placeholder="{{ t.formNamePh }}" style="background:transparent; border:none; outline:none; font-size:18px; color:#F8F9FA; font-family:'Bricolage Grotesque',sans-serif; padding:0;">
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; padding:16px 24px; border-bottom:1px solid #F7C518;">
+          <span style="font-weight:500; font-size:clamp(20px,6vw,28px); color:#F8F9FA;">{{ t.formEmail }}</span>
+          <input type="email" placeholder="{{ t.formEmailPh }}" style="background:transparent; border:none; outline:none; font-size:18px; color:#F8F9FA; font-family:'Bricolage Grotesque',sans-serif; padding:0;">
+        </label>
+        <label style="display:flex; flex-direction:column; gap:8px; padding:16px 24px; border-bottom:1px solid #F7C518;">
+          <span style="font-weight:500; font-size:clamp(20px,6vw,28px); color:#F8F9FA;">{{ t.formMsg }}</span>
+          <textarea rows="2" placeholder="{{ t.formMsgPh }}" style="background:transparent; border:none; outline:none; font-size:18px; color:#F8F9FA; font-family:'Bricolage Grotesque',sans-serif; padding:0; resize:none;"></textarea>
+        </label>
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:16px;">
+        <div onClick="{{ togglePrivacy }}" style="display:flex; align-items:flex-start; gap:8px; cursor:pointer; width:100%;">
+          <div style="width:24px; height:24px; border:2px solid #3355FF; border-radius:4px; flex:none; display:flex; align-items:center; justify-content:center; color:#F7C518; font-weight:700; font-size:18px;">{{ privacyMark }}</div>
+          <span style="font-size:16px; line-height:120%; color:#F8F9FA;">{{ t.privacy }}</span>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:16px;">
+          <img src="assets/arrow.png" alt="" style="width:clamp(96px,30vw,150px); height:auto; flex:none;">
+          <button style="display:inline-flex; align-items:center; justify-content:center; padding:12px 32px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:18px; background:rgba(0,0,0,.01); cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; white-space:nowrap; opacity: {{ sendOpacity }};" style-hover="background:#3355FF; border-color:#3355FF;">{{ t.send }}</button>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div style="display:flex; flex-direction:column; gap:24px; margin-top:16px;">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:40px; color:#3355FF; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
+          <span style="font-weight:700; font-size:18px; color:#F8F9FA;">© Alexander Lindt 2026</span>
+        </div>
+        <span onClick="{{ openLegal }}" style="align-self:flex-end; color:#F8F9FA; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ t.legal }}</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:8px;">
+          <a href="https://github.com/alexlindt-arch" target="_blank" style="color:#F8F9FA; text-decoration:none; font-weight:500; font-size:18px;" style-hover="color:#F87A55;">GitHub</a>
+          <a href="https://www.linkedin.com/in/alexander-lindt-2134a22a9/" target="_blank" style="color:#F8F9FA; text-decoration:none; font-weight:500; font-size:18px;" style-hover="color:#F87A55;">LinkedIn</a>
+          <a href="mailto:alexanderlindt16@outlook.de" style="color:#F8F9FA; text-decoration:none; font-weight:500; font-size:18px;" style-hover="color:#F87A55;">Email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT DETAIL OVERLAY ============ -->
+  <sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; top:0; left:0; width:100%; height:100vh; z-index:100; background:#0E1013; overflow-y:auto;">
+      <div style="background:url('assets/detail-grid.png') top center / 100% auto no-repeat;">
+      <!-- top nav -->
+      <div style="height:64px; display:flex; align-items:center; justify-content:space-between; padding:16px;">
+        <span onClick="{{ closeDetail }}" style="font-family:'Dancing Script',cursive; font-weight:700; font-size:32px; color:#3355FF; line-height:1; display:inline-flex; cursor:pointer;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
+        <div onClick="{{ closeDetail }}" style="width:32px; height:32px; display:flex; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px;">
+          <div style="height:2.5px; background:#0E1013; border-radius:2px;"></div>
+          <div style="height:2.5px; background:#0E1013; border-radius:2px;"></div>
+          <div style="height:2.5px; background:#0E1013; border-radius:2px;"></div>
+        </div>
+      </div>
+      <!-- body -->
+      <div style="padding:32px 16px 96px; display:flex; flex-direction:column; gap:32px;">
+        <div style="display:flex; flex-direction:column; gap:4px; align-self:flex-start;">
+          <span style="font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:100%; color:#0E1013;">{{ detail.title }}</span>
+          <img src="assets/blue-underline.png" alt="" style="width:231px; height:20px; object-fit:contain;">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="font-weight:700; font-size:clamp(20px,5.5vw,26px); color:#0E1013;">{{ detailDescLabel }}</div>
+          <p style="margin:0; font-size:18px; line-height:22px; text-align:justify; color:#0E1013;">{{ detail.desc }}</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="font-weight:700; font-size:clamp(20px,5.5vw,26px); color:#0E1013;">{{ detailImplLabel }}</div>
+          <p style="margin:0; font-size:18px; line-height:22px; text-align:justify; color:#0E1013;">{{ detail.impl }}</p>
+        </div>
+        <div style="font-weight:700; font-size:18px; line-height:22px; color:#0E1013;">{{ detail.duration }}</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+          <sc-for list="{{ detailTech }}" as="tag" hint-placeholder-count="0">
+            <span style="display:inline-flex; align-items:center; gap:4px; font-size:16px; line-height:120%; color:#0E1013; margin-right:8px;">{{ tag.el }}{{ tag.name }}</span>
+          </sc-for>
+        </div>
+        {{ detailImgEl }}
+        <div style="display:flex; justify-content:center; gap:24px;">
+          <a href="{{ detail.github }}" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:18px; text-decoration:none; background:rgba(0,0,0,.01); white-space:nowrap;" style-hover="background:#3355FF; border-color:#3355FF;">GitHub</a>
+          <a href="{{ detail.live }}" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:18px; text-decoration:none; background:rgba(0,0,0,.01); white-space:nowrap;" style-hover="background:#3355FF; border-color:#3355FF;">Live Test</a>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; padding-top:16px;">
+          <span onClick="{{ closeDetail }}" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:18px; color:#F8F9FA; cursor:pointer; white-space:nowrap;"><img src="assets/arrow-back.png" alt="" style="width:24px; height:auto;">{{ goBackLabel }}</span>
+          <span onClick="{{ nextDetail }}" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:18px; color:#F8F9FA; cursor:pointer; white-space:nowrap;">{{ nextLabel }}<img src="assets/arrow-yellow.png" alt="" style="width:24px; height:24px; object-fit:contain; transform:scaleX(-1);"></span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ LEGAL NOTICE OVERLAY ============ -->
+  <sc-if value="{{ legalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; top:0; left:0; width:100%; height:100vh; z-index:100; background:#F8F9FA; overflow-y:auto;">
+      <!-- torn paper header -->
+      <div style="position:relative; background:#0E1013 url('assets/hero-paper.png') bottom center / 100% auto no-repeat; padding:16px 16px 56px;">
+        <div style="height:32px; display:flex; align-items:center; justify-content:space-between;">
+          <span onClick="{{ closeLegal }}" style="line-height:1; display:inline-flex; cursor:pointer;"><span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:32px; color:#3355FF; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span></span>
+          <div onClick="{{ closeLegal }}" style="width:32px; height:32px; display:flex; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px;">
+            <div style="height:2.5px; background:#F8F9FA; border-radius:2px;"></div>
+            <div style="height:2.5px; background:#F8F9FA; border-radius:2px;"></div>
+            <div style="height:2.5px; background:#F8F9FA; border-radius:2px;"></div>
+          </div>
+        </div>
+        <h1 style="margin:56px 0 0; font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:120%; color:#F8F9FA;">{{ legalT.imprintH2 }}</h1>
+      </div>
+      <!-- body -->
+      <div style="padding:24px 20px 56px; display:flex; flex-direction:column; gap:24px;">
+        <span onClick="{{ closeLegal }}" style="display:inline-flex; align-items:center; gap:8px; align-self:flex-start; font-weight:700; font-size:18px; color:#0E1013; cursor:pointer;"><img src="assets/arrow-back.png" alt="" style="width:24px; height:auto;">{{ legalT.back }}</span>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-weight:700; font-size:23px; line-height:120%; color:#3355FF;">{{ legalT.imprintH }}</div>
+          <div style="display:flex; flex-direction:column; gap:2px; font-size:16px; line-height:120%; color:#0E1013;">
+            <sc-for list="{{ legalT.imprint }}" as="line" hint-placeholder-count="3">
+              <div>{{ line }}</div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-weight:700; font-size:23px; line-height:120%; color:#3355FF;">{{ legalT.contactH }}</div>
+          <div style="font-size:16px; line-height:120%; color:#0E1013;">{{ legalT.contactBody }}</div>
+        </div>
+        <sc-for list="{{ legalT.sections }}" as="sec" hint-placeholder-count="6">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-weight:700; font-size:23px; line-height:120%; color:#3355FF;">{{ sec.h }}</div>
+            <p style="margin:0; font-size:16px; line-height:130%; text-align:justify; color:#0E1013;">{{ sec.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; top:0; left:0; width:100%; height:100vh; z-index:100; background:#0E1013 url('assets/hero-paper.png') bottom center / 100% auto no-repeat; display:flex; flex-direction:column; padding:16px;">
+      <div style="height:32px; display:flex; align-items:center; justify-content:space-between;">
+        <span onClick="{{ closeMenu }}" style="font-family:'Dancing Script',cursive; font-weight:700; font-size:32px; color:#3355FF; line-height:1; display:inline-flex; cursor:pointer;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
+        <div onClick="{{ closeMenu }}" style="width:32px; height:32px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#F8F9FA; font-size:28px; font-weight:400; line-height:1;">✕</div>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px; padding-bottom:24px;">
+        <a href="#about" onClick="{{ closeMenu }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:20px;">{{ t.navAbout }}</a>
+        <a href="#skills" onClick="{{ closeMenu }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:20px;">{{ t.navSkills }}</a>
+        <a href="#projects" onClick="{{ closeMenu }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:20px;">{{ t.navProjects }}</a>
+        <a href="#contact" onClick="{{ closeMenu }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:20px;">{{ t.navContact }}</a>
+        <div style="display:flex; align-items:center; gap:12px; margin-top:4px;">
+          <button onClick="{{ setEn }}" style="background:none; border:none; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:16px; padding:4px 2px; color: {{ enColor }};">EN</button>
+          <div onClick="{{ toggleLang }}" style="width:32px; height:12px; background:#F87A55; border-radius:100px; position:relative; cursor:pointer;">
+            <div style="position:absolute; width:18px; height:18px; border-radius:50%; top:-3px; background:#3355FF; transition:left .2s; left: {{ knobLeft }};"></div>
+          </div>
+          <button onClick="{{ setDe }}" style="background:none; border:none; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:16px; padding:4px 2px; color: {{ deColor }};">DE</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:20px; margin-top:48px;">
+          <a href="https://www.linkedin.com/in/alexander-lindt-2134a22a9/" target="_blank" style="width:44px; height:44px; border:1.5px solid #F8F9FA; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#F8F9FA; text-decoration:none;" style-hover="background:#3355FF; border-color:#3355FF;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.09h4.56V23H.22V8.09zM8.34 8.09h4.37v2.04h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V23h-4.55v-7.28c0-1.74-.03-3.97-2.42-3.97-2.42 0-2.79 1.89-2.79 3.84V23H8.34V8.09z"></path></svg>
+          </a>
+          <a href="https://github.com/alexlindt-arch" target="_blank" style="width:44px; height:44px; border:1.5px solid #F8F9FA; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#F8F9FA; text-decoration:none;" style-hover="background:#3355FF; border-color:#3355FF;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.15c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"></path></svg>
+          </a>
+          <a href="mailto:alexanderlindt16@outlook.de" style="width:44px; height:44px; border:1.5px solid #F8F9FA; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#F8F9FA; text-decoration:none;" style-hover="background:#3355FF; border-color:#3355FF;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 6l10 7L22 6"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:320,&quot;height&quot;:812},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;de&quot;,&quot;en&quot;],&quot;default&quot;:&quot;de&quot;,&quot;tsType&quot;:&quot;'de' | 'en'&quot;,&quot;section&quot;:&quot;Sprache&quot;}}">
+class Component extends DCLogic {
+  state = {
+    lang: (typeof localStorage !== 'undefined' && localStorage.getItem('al-portfolio-lang')) || (this.props.defaultLang ?? 'de'),
+    menuOpen: false,
+    privacy: false,
+    detail: null,
+    legal: false,
+    testiActive: null
+  };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const cards = document.querySelectorAll('[data-testi-idx]');
+      if (!cards.length) return;
+      const mid = window.innerHeight / 2;
+      let best = null, bestDist = Infinity;
+      cards.forEach(c => {
+        const r = c.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        const d = Math.abs((r.top + r.bottom) / 2 - mid);
+        if (d < bestDist) { bestDist = d; best = parseInt(c.getAttribute('data-testi-idx'), 10); }
+      });
+      if (best !== this.state.testiActive) this.setState({ testiActive: best });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    window.addEventListener('resize', this._onScroll, { passive: true });
+    setTimeout(this._onScroll, 300);
+  }
+  componentWillUnmount() {
+    if (this._onScroll) { window.removeEventListener('scroll', this._onScroll); window.removeEventListener('resize', this._onScroll); }
+  }
+
+  ORDER = ['join', 'pollo', 'ascars'];
+
+  TECHICON = {
+    'HTML': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+    'CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+    'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+    'TypeScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
+    'Angular': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg',
+    'Firebase': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
+    'OOP': 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#8E5CFF" stroke-width="4"><circle cx="32" cy="13" r="8"/><circle cx="14" cy="50" r="8"/><circle cx="50" cy="50" r="8"/><path d="M28 20 18 43M36 20 46 43M22 50h20" stroke-linecap="round"/></svg>')
+  };
+
+  DETAILS = {
+    de: {
+      join: { title: 'Join', img: 'assets/proj-join-detail.jpg', desc: 'Task-Manager nach dem Kanban-System. Aufgaben per Drag & Drop erstellen und organisieren, Nutzer und Kategorien zuweisen.', impl: 'Ich habe das Drag-&-Drop-Board umgesetzt und die Datenhaltung über Firebase angebunden. Fokus auf sauberer Komponentenstruktur, wiederverwendbaren Services und responsivem Verhalten.', duration: 'Dauer: 5 Wochen', tech: ['CSS', 'HTML', 'Firebase', 'Angular', 'TypeScript'], github: 'https://github.com/RudolfSchultz/Join-groupe', live: 'https://join-3175.developerakademie.net/index.html' },
+      pollo: { title: 'El Pollo Loco', img: 'assets/proj-pollo.jpg', desc: 'Jump-’n’-Run-Spiel auf Basis objektorientierter Programmierung. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu bestehen.', impl: 'Spiellogik, Kollisionserkennung und Animationen wurden vollständig objektorientiert in Vanilla JavaScript umgesetzt — inklusive Statusleisten, Sound und Endgegner.', duration: 'Dauer: 3 Wochen', tech: ['CSS', 'HTML', 'JavaScript', 'OOP'], github: 'https://github.com/alexlindt-arch/El-Pollo-Loco', live: 'https://alexander-lindt.developerakademie.net/El-Pollo-Loco/' },
+      ascars: { title: 'BurgerHouse', img: 'assets/proj-burger.jpg', desc: 'Bestell-App für ein Lieferrestaurant: Speisekarte mit Burgern, Pizza & Salaten, Warenkorb mit Live-Summe und Bestellbestätigung — komplett responsiv.', impl: 'Umsetzung in Vanilla JavaScript mit dynamischem Rendering aus einer Datenstruktur, Warenkorb-Logik (Menge, Zwischensumme, Liefergebühr, Mindestbestellwert) und mobilem Warenkorb-Dialog.', duration: 'Dauer: 4 Wochen', tech: ['CSS', 'HTML', 'JavaScript'], github: 'https://github.com/alexlindt-arch/BestellApp', live: 'https://alexander-lindt.developerakademie.net/BestellApp/' }
+    },
+    en: {
+      join: { title: 'Join', img: 'assets/proj-join-detail.jpg', desc: 'Task manager inspired by the Kanban System. Create and organize tasks using drag and drop, assign users and categories.', impl: 'I built the drag-and-drop board and wired up data persistence with Firebase. Focus on clean component structure, reusable services and responsive behaviour.', duration: 'Duration: 5 weeks', tech: ['CSS', 'HTML', 'Firebase', 'Angular', 'TypeScript'], github: 'https://github.com/RudolfSchultz/Join-groupe', live: 'https://join-3175.developerakademie.net/index.html' },
+      pollo: { title: 'El Pollo Loco', img: 'assets/proj-pollo.jpg', desc: 'Jump-and-run game built on an object-oriented approach. Help Pepe find coins and tabasco salsa to fight the crazy hen.', impl: 'Game logic, collision detection and animations were implemented fully object-oriented in vanilla JavaScript — including status bars, sound and a boss fight.', duration: 'Duration: 3 weeks', tech: ['CSS', 'HTML', 'JavaScript', 'OOP'], github: 'https://github.com/alexlindt-arch/El-Pollo-Loco', live: 'https://alexander-lindt.developerakademie.net/El-Pollo-Loco/' },
+      ascars: { title: 'BurgerHouse', img: 'assets/proj-burger.jpg', desc: 'Ordering app for a delivery restaurant: a menu of burgers, pizza & salads, a live-total cart and order confirmation — fully responsive.', impl: 'Built in vanilla JavaScript with dynamic rendering from a data structure, cart logic (quantity, subtotal, delivery fee, minimum order) and a mobile cart dialog.', duration: 'Duration: 4 weeks', tech: ['CSS', 'HTML', 'JavaScript'], github: 'https://github.com/alexlindt-arch/BestellApp', live: 'https://alexander-lindt.developerakademie.net/BestellApp/' }
+    }
+  };
+
+  lockScroll(on) { try { document.body.style.overflow = on ? 'hidden' : ''; document.documentElement.style.overflow = on ? 'hidden' : ''; } catch (e) {} }
+  openLegal() { this.setState({ legal: true, menuOpen: false }); this.lockScroll(true); try { window.scrollTo(0, 0); } catch (e) {} }
+  closeLegal() { this.setState({ legal: false }); this.lockScroll(false); }
+  LEGAL = {
+    de: {
+      back: 'Zurück', imprintH2: 'Impressum', imprintH: 'Angaben',
+      imprint: ['Alexander Lindt', 'Musterstraße 1', '85049 Ingolstadt'],
+      contactH: 'Kontakt', contactBody: 'E-Mail: alexanderlindt16@outlook.de',
+      sections: [
+        { h: 'Annahme der Bedingungen', body: 'Durch den Zugriff auf und die Nutzung dieses Portfolios (Produkt) erkennen Sie die folgenden Bedingungen sowie alle Richtlinien und Änderungen an, die Ihnen von Zeit zu Zeit vorgelegt werden. Ich behalte mir vor, die Bedingungen jederzeit ohne Vorankündigung zu aktualisieren oder zu ändern.' },
+        { h: 'Umfang und Eigentum des Produkts', body: 'Dieses Portfolio wurde im Rahmen eines Ausbildungsprojekts im Web-Development-Bootcamp der Developer Akademie GmbH entwickelt. Es dient Bildungszwecken und ist nicht für eine umfangreiche private oder geschäftliche Nutzung vorgesehen. Daher kann ich keine durchgehende Verfügbarkeit, Zuverlässigkeit, Genauigkeit oder sonstige Qualitätsmerkmale garantieren. Das Design des Portfolios ist Eigentum der Developer Akademie GmbH. Die unbefugte Nutzung, Vervielfältigung, Änderung, Verbreitung oder Replikation des Designs ist strengstens untersagt.' },
+        { h: 'Schutzrechte', body: 'Abgesehen vom Design, das der Developer Akademie GmbH gehört, behalte ich alle Schutzrechte am Portfolio, einschließlich aller zugehörigen urheberrechtlich geschützten Materialien, Marken und sonstiger geschützter Informationen.' },
+        { h: 'Nutzung des Produkts', body: 'Das Portfolio ist ausschließlich für rechtmäßige Zwecke bestimmt, in Übereinstimmung mit allen geltenden Gesetzen und Vorschriften. Jegliche Nutzung für illegale Aktivitäten oder um andere Personen zu belästigen, zu schädigen, zu bedrohen oder einzuschüchtern, ist strengstens untersagt.' },
+        { h: 'Haftungsausschluss', body: 'Das Portfolio wird "wie besehen" ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt. In keinem Fall hafte ich oder die Developer Akademie für direkte, indirekte, zufällige, besondere oder Folgeschäden, die sich aus der Nutzung oder Leistung des Portfolios ergeben.' },
+        { h: 'Freistellung', body: 'Sie erklären sich damit einverstanden, mich, die Developer Akademie und unsere Partner von allen Ansprüchen, Forderungen, Verlusten, Schäden, Kosten oder Verbindlichkeiten freizustellen, die sich aus Ihrer Nutzung des Portfolios und/oder Ihrem Verstoß gegen dieses Impressum ergeben. Bei Fragen kontaktieren Sie mich bitte unter alexanderlindt16@outlook.de. Stand: 26. Juli 2025' }
+      ]
+    },
+    en: {
+      back: 'Back', imprintH2: 'Legal Notice', imprintH: 'Imprint',
+      imprint: ['Alexander Lindt', 'Musterstraße 1', '85049 Ingolstadt'],
+      contactH: 'Contact', contactBody: 'Email: alexanderlindt16@outlook.de',
+      sections: [
+        { h: 'Acceptance of terms', body: 'By accessing and using this Portfolio (Product), you acknowledge and agree to the following terms and conditions, and any policies, guidelines, or amendments thereto that may be presented to you from time to time. I may update or change the terms and conditions from time to time without notice.' },
+        { h: 'Scope and ownership of the product', body: 'This Portfolio has been developed as part of a student project in a web development bootcamp at the Developer Akademie GmbH. It has an educational purpose and is not intended for extensive personal & business usage. As such, I cannot guarantee consistent availability, reliability, accuracy, or any other aspect of quality regarding this Product. The design of this Portfolio is owned by the Developer Akademie GmbH. Unauthorized use, reproduction, modification, distribution, or replication of the design is strictly prohibited.' },
+        { h: 'Proprietary rights', body: 'Aside from the design owned by Developer Akademie GmbH, I retain all proprietary rights in this Portfolio, including any associated copyrighted material, trademarks, and other proprietary information.' },
+        { h: 'Use of the product', body: 'This Portfolio is intended to be used for lawful purposes only, in accordance with all applicable laws and regulations. Any use of the Portfolio for illegal activities, or to harass, harm, threaten, or intimidate another person, is strictly prohibited.' },
+        { h: 'Disclaimer of warranties and limitation of liability', body: 'This Portfolio is provided "as is" without warranty of any kind, whether express or implied. In no event will I, or the Developer Akademie, be liable for any direct, indirect, incidental, special, consequential or exemplary damages arising out of or in connection with the use or performance of this Portfolio.' },
+        { h: 'Indemnity', body: 'You agree to indemnify, defend and hold harmless me, the Developer Akademie, and our partners, from and against any claim, demand, loss, damage, cost, or liability arising out of or relating to your use of this Portfolio and/or your breach of this Legal Notice. For any questions, please contact me at alexanderlindt16@outlook.de. Date: July 26, 2025' }
+      ]
+    }
+  };
+
+  openDetail(key) { this.setState({ detail: key, menuOpen: false }); this.lockScroll(true); try { window.scrollTo(0, 0); } catch (e) {} }
+  closeDetail() { this.setState({ detail: null }); this.lockScroll(false); }
+  nextDetail() { const i = this.ORDER.indexOf(this.state.detail); this.setState({ detail: this.ORDER[(i + 1) % this.ORDER.length] }); try { window.scrollTo(0, 0); } catch (e) {} }
+
+  T = {
+    de: {
+      navAbout: 'Über mich', navSkills: 'Skills', navProjects: 'Projekte', navContact: 'Kontakt',
+      hello: 'Hallo Welt', getInTouch: 'Kontakt aufnehmen',
+      aboutEyebrow: 'Wer ist Alex?', aboutTitle: 'Über mich', letsTalk: 'Lass uns reden',
+      aboutText: 'Hallo, ich bin Alexander — Webentwickler aus Ingolstadt. Ich baue Websites und Web-Apps, die nicht nur gut aussehen, sondern sauber funktionieren. Jedes Projekt ist für mich eine Chance, die eleganteste und effizienteste Lösung zu finden. Lassen Sie uns gemeinsam etwas Großartiges bauen!',
+      basedIn: 'Zuhause in Ingolstadt', relocate: 'Offen für Umzug', remote: 'Offen für Remote-Arbeit',
+      stackEyebrow: 'Mein Stack', stackTitle: 'Skill set',
+      stackText: 'Von semantischem HTML bis zu komplexen Angular-Apps: Ich arbeite mit modernen Frontend-Technologien und bleibe neugierig — neue Tools und Frameworks lerne ich schnell und gerne.',
+      craftEyebrow: 'Mein Handwerk', projectsTitle: 'Projekte', projectDetails: 'Projekt-Details',
+      projectsText: 'Schauen Sie sich um und probieren Sie meine Projekte aus. Mein Fokus: responsive, benutzerfreundliche Anwendungen mit effizientem, sauberem Code.',
+      projJoin: 'Task-Manager nach dem Kanban-System. Aufgaben per Drag & Drop erstellen und organisieren, Nutzer und Kategorien zuweisen.',
+      projPollo: 'Jump-’n’-Run-Spiel auf Basis objektorientierter Programmierung. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu bestehen.',
+      projAsCars: 'Bestell-App für ein Lieferrestaurant: Speisekarte mit Burgern, Pizza & Salaten, Warenkorb mit Live-Summe und Bestellbestätigung.',
+      testiEyebrow: 'Stimmen dazu:', testiTitle: 'Das sagen Kollegen', profile: 'Profil',
+      contactEyebrow: 'Kontakt', contactTitle: 'Bereit, zusammen- zuarbeiten?',
+      contactText: 'Sie haben ein Projekt im Kopf oder suchen Verstärkung im Frontend? Ich bringe Sorgfalt, Neugier und sauberen Code mit — und die Motivation, mit jedem Projekt besser zu werden. Schreiben Sie mir, ich melde mich schnell zurück.',
+      formName: 'Wie heißen Sie?', formNamePh: 'Ihr Name',
+      formEmail: 'Ihre E-Mail?', formEmailPh: 'ihremail@email.de',
+      formMsg: 'Wie kann ich helfen?', formMsgPh: 'Hallo Alexander, ich interessiere mich für…',
+      privacy: 'Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.',
+      send: 'Senden', legal: 'Impressum'
+    },
+    en: {
+      navAbout: 'About me', navSkills: 'Skills', navProjects: 'Projects', navContact: 'Contact',
+      hello: 'Hello world', getInTouch: 'Get in Touch',
+      testiEyebrow: 'In their words:', testiTitle: "Colleagues' Thoughts", profile: 'Profile',
+      stackEyebrow: 'My stack', stackTitle: 'Skill set',
+      stackText: 'From semantic HTML to complex Angular apps: I work with modern front-end technologies and stay curious — I pick up new tools and frameworks quickly and gladly.',
+      craftEyebrow: 'My craft', projectsTitle: 'Projects', projectDetails: 'Project details',
+      projectsText: 'Take a look and interact with my projects. My focus: responsive, user-friendly applications built with efficient, clean code.',
+      projJoin: 'Task manager inspired by the Kanban system. Create and organize tasks using drag and drop, assign users and categories.',
+      projPollo: 'Jump, run and throw game based on an object-oriented approach. Help Pepe find coins and tabasco salsa to fight the crazy hen.',
+      projAsCars: 'Ordering app for a delivery restaurant: a menu of burgers, pizza & salads, a live-total cart and order confirmation.',
+      aboutEyebrow: "Who's Alex?", aboutTitle: 'About me', letsTalk: "Let's talk",
+      aboutText: "Hey there, I'm Alexander — a web developer from Ingolstadt, Germany. I build websites and web apps that don't just look good but work cleanly. Every project is a chance to find the most elegant, efficient solution. Let's collaborate and build something remarkable together!",
+      basedIn: 'Based in Ingolstadt', relocate: 'Open to relocate', remote: 'Open to work remote',
+      contactEyebrow: 'Contact me', contactTitle: 'Ready to work together?',
+      contactText: "Got a project in mind or looking for front-end support? I bring care, curiosity and clean code — plus the drive to get better with every project. Drop me a line, I'll get back to you quickly.",
+      formName: "What's your name?", formNamePh: 'Your name goes here',
+      formEmail: "What's your email?", formEmailPh: 'youremail@email.com',
+      formMsg: 'How can I help you?', formMsgPh: "Hello Alexander, I am interested in…",
+      privacy: "I've read the privacy policy and agree to the processing of my data as outlined.",
+      send: 'Send', legal: 'Legal notice'
+    }
+  };
+
+  TESTI = {
+    de: [
+      { name: 'Ben Bronner', role: 'Team Lead', quote: 'Alexander hat unser Gruppenprojekt strukturiert und ruhig durch jede Deadline gebracht. Sein Code ist sauber und gut dokumentiert — die Zusammenarbeit hat wirklich Spaß gemacht.' },
+      { name: 'Rudolf Schultz', role: 'Frontend Developer', quote: 'Zuverlässig, lernbereit und mit einem guten Auge für Details. Alexander denkt mit, stellt die richtigen Fragen und liefert Ergebnisse, auf die man sich verlassen kann.' },
+      { name: 'Denis Bode', role: 'Fullstack Developer', quote: 'Mit Alexander zusammenzuarbeiten war eine echte Bereicherung. Er bringt gute Laune ins Team, denkt lösungsorientiert und packt auch bei kniffligen Aufgaben motiviert mit an. Jederzeit gerne wieder!' }
+    ],
+    en: [
+      { name: 'Ben Bronner', role: 'Team Lead', quote: 'Alexander guided our group project through every deadline in a calm, structured way. His code is clean and well documented — working with him was genuinely fun.' },
+      { name: 'Rudolf Schultz', role: 'Frontend Developer', quote: 'Reliable, eager to learn and with a great eye for detail. Alexander thinks along, asks the right questions and delivers results you can count on.' },
+      { name: 'Denis Bode', role: 'Fullstack Developer', quote: 'Working with Alexander was a real pleasure. He brings good energy to the team, thinks in solutions and stays motivated even on the tricky tasks. I would gladly work with him again anytime!' }
+    ]
+  };
+
+  setLang(lang) {
+    this.setState({ lang });
+    try { localStorage.setItem('al-portfolio-lang', lang); } catch (e) {}
+  }
+
+  SKILLS = [
+    { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+    { name: 'Angular', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
+    { name: 'Supabase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { name: 'REST-API', icon: 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="22" fill="none" stroke="#66C8FF" stroke-width="5"/><text x="32" y="39" font-family="Arial" font-size="18" font-weight="bold" fill="#66C8FF" text-anchor="middle">API</text></svg>') },
+    { name: 'Scrum', icon: 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#F565CB" stroke-width="5" stroke-linecap="round"><path d="M14 40a20 20 0 1 1 4 12"/><path d="M10 40h10v10" fill="none"/></svg>') },
+    { name: 'Material Design', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg' }
+  ];
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = this.T[lang] || this.T.de;
+    const papers = ['assets/testi-card-a.png', 'assets/testi-card-b.png', 'assets/testi-card-c.png'];
+    const tilts = ['rotate(-4deg)', 'rotate(0deg)', 'rotate(4deg)'];
+    const tiltsHover = ['rotate(-4deg) scale(1.05)', 'rotate(0deg) scale(1.05)', 'rotate(4deg) scale(1.05)'];
+    const active = this.state.testiActive;
+    const testimonials = (this.TESTI[lang] || this.TESTI.de).map((x, i) => {
+      const isActive = active === i;
+      return {
+        ...x,
+        idx: i,
+        tilt: tilts[i % 3],
+        tiltHover: tiltsHover[i % 3],
+        cardBg: "transparent url('" + papers[i % 3] + "') center/100% 100% no-repeat",
+        z: [2, 1, 0][i % 3],
+        cardFilter: 'drop-shadow(0px 0px 8px rgba(0,0,0,.16))',
+        transformNow: isActive ? tiltsHover[i % 3] : tilts[i % 3],
+        zNow: isActive ? 10 : [2, 1, 0][i % 3],
+        filterNow: isActive ? 'drop-shadow(0px 12px 24px rgba(0,0,0,.28))' : 'drop-shadow(0px 0px 8px rgba(0,0,0,.16))'
+      };
+    });
+    return {
+      t,
+      skills: this.SKILLS.map(s => ({ ...s, iconEl: React.createElement('img', { src: s.icon, alt: s.name, style: { width: 46, height: 46, objectFit: 'contain' } }) })),
+      testimonials,
+      openLinkedIn: () => { try { window.open('https://www.linkedin.com/in/alexander-lindt-2134a22a9/', '_blank'); } catch (e) {} },
+      menuOpen: this.state.menuOpen,
+      openJoin: () => this.openDetail('join'),
+      openPollo: () => this.openDetail('pollo'),
+      openAsCars: () => this.openDetail('ascars'),
+      closeDetail: () => this.closeDetail(),
+      nextDetail: () => this.nextDetail(),
+      hasDetail: !!this.state.detail,
+      detail: this.state.detail ? (this.DETAILS[lang] || this.DETAILS.de)[this.state.detail] : null,
+      detailTech: this.state.detail ? ((this.DETAILS[lang] || this.DETAILS.de)[this.state.detail].tech).map(n => ({ name: n, el: (this.TECHICON[n] ? React.createElement('img', { src: this.TECHICON[n], alt: '', style: { width: 24, height: 24, objectFit: 'contain' } }) : null) })) : [],
+      detailImgEl: this.state.detail ? React.createElement('img', { src: (this.DETAILS[lang] || this.DETAILS.de)[this.state.detail].img, alt: (this.DETAILS[lang] || this.DETAILS.de)[this.state.detail].title, style: { width: '100%', height: 244, objectFit: 'cover', borderRadius: 20, boxShadow: '0 24px 60px rgba(0,0,0,.4)', display: 'block' } }) : null,
+      detailDescLabel: lang === 'de' ? 'Beschreibung' : 'Description',
+      detailImplLabel: lang === 'de' ? 'Umsetzung im Detail' : 'Implementation Details',
+      goBackLabel: lang === 'de' ? 'Zurück' : 'Go Back',
+      nextLabel: lang === 'de' ? 'Nächstes Projekt' : 'Next Project',
+      togglePrivacy: () => this.setState(s => ({ privacy: !s.privacy })),
+      privacyMark: this.state.privacy ? '✓' : '',
+      sendOpacity: this.state.privacy ? 1 : 0.5,
+      openMenu: () => { this.setState({ menuOpen: true }); this.lockScroll(true); },
+      closeMenu: () => { this.setState({ menuOpen: false }); this.lockScroll(false); },
+      legalOpen: this.state.legal,
+      openLegal: () => this.openLegal(),
+      closeLegal: () => this.closeLegal(),
+      legalT: this.LEGAL[lang] || this.LEGAL.de,
+      setDe: () => this.setLang('de'),
+      setEn: () => this.setLang('en'),
+      toggleLang: () => this.setLang(lang === 'de' ? 'en' : 'de'),
+      knobLeft: lang === 'de' ? '15px' : '-1px',
+      deColor: lang === 'de' ? '#F87A55' : 'rgba(248,249,250,.6)',
+      enColor: lang === 'en' ? '#F87A55' : 'rgba(248,249,250,.6)'
+    };
+  }
+}
+</script>
+</body>
+</html>
