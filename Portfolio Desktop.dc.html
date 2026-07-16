@@ -22,6 +22,34 @@
     * { box-sizing:border-box; }
     @keyframes al-wave { 0%{transform:rotate(0deg)} 15%{transform:rotate(18deg)} 30%{transform:rotate(-10deg)} 45%{transform:rotate(16deg)} 60%{transform:rotate(-6deg)} 75%{transform:rotate(10deg)} 100%{transform:rotate(0deg)} }
     input::placeholder, textarea::placeholder { color:rgba(248,249,250,.55); font-family:'Bricolage Grotesque',sans-serif; }
+    .al-polaroid-img { filter:grayscale(1) contrast(1.05); transition:filter .4s ease; }
+    .al-polaroid:hover .al-polaroid-img { filter:grayscale(0) contrast(1); }
+    .al-polaroid.is-color .al-polaroid-img { filter:grayscale(0) contrast(1); }
+    .al-hello-wave { position:absolute; right:6px; top:-42px; font-size:34px; line-height:1; opacity:0; transform:rotate(-180deg) scale(.6); transform-origin:75% 75%; pointer-events:none; }
+    @keyframes al-hand { 0%{opacity:0; transform:rotate(-180deg) scale(.6)} 8%{opacity:1; transform:rotate(0deg) scale(1)} 18%{transform:rotate(18deg)} 28%{transform:rotate(-10deg)} 38%{transform:rotate(16deg)} 48%{transform:rotate(-6deg)} 58%{transform:rotate(10deg)} 68%{transform:rotate(0deg); opacity:1} 90%{opacity:1} 100%{opacity:0; transform:rotate(0deg) scale(.9)} }
+    .al-hello:hover .al-hello-wave { animation:al-hand 3.5s ease forwards; }
+    .al-word .al-ltr { display:inline-block; color:#F8F9FA; cursor:pointer; transition:color .2s ease; }
+    .al-word-fe .al-ltr.is-lit, .al-word-fe .al-ltr:hover { color:#35C77F; }
+    .al-word-dev .al-ltr.is-lit, .al-word-dev .al-ltr:hover { color:#F87A55; }
+    .al-peel { perspective:1100px; }
+    .al-peel-front { transform-origin:0% 100%; transition:transform 1.5s cubic-bezier(.55,.06,.28,.99), opacity .45s ease 1.15s, filter 1.5s ease; will-change:transform; }
+    .al-peel.is-peeled .al-peel-front { transform:perspective(1100px) rotate3d(1,1,0,176deg); opacity:0; filter:drop-shadow(16px 20px 18px rgba(0,0,0,.45)) brightness(.85); pointer-events:none; }
+    .al-skill-ic { filter:grayscale(1) brightness(1.35); transition:filter .25s ease, transform .25s ease; }
+    .al-skill-ic:hover { filter:none; transform:scale(1.1); }
+    .al-skill-ic.is-color { filter:none; }
+    .al-cta { transition:background .25s ease, box-shadow .25s ease, border-color .25s ease, transform .12s ease; }
+    @keyframes al-float { 0% { transform:translateY(10px); } 50% { transform:translateY(-20px); } 100% { transform:translateY(10px); } }
+    .al-cta:hover { background:#F87A55 !important; border-color:#F87A55 !important; transform:translate(2px,4px); box-shadow:0px 0px 0px #F8F9FA !important; }
+    .al-projimg { position:relative; }
+    .al-projimg .al-pd { position:absolute; right:24px; bottom:24px; z-index:3; display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px rgba(14,16,19,.85); color:#F8F9FA; font-weight:500; font-size:18px; background:rgba(14,16,19,.45); backdrop-filter:blur(2px); opacity:0; transition:opacity .3s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .12s ease; cursor:pointer; }
+    .al-projimg:hover .al-pd { opacity:1; }
+    .al-projimg .al-pd:hover { background:#F87A55; border-color:#F87A55; transform:translate(2px,4px); box-shadow:0px 0px 0px rgba(14,16,19,0); }
+    .al-projimg > img, .al-float-wrap img { transition:transform .5s ease; }
+    .al-projimg:hover > img { transform:scale(1.06); border-radius:20px; }
+    .al-float-wrap { animation:al-float 4.5s ease-in-out infinite; }
+    .al-projimg:hover .al-float-wrap { animation:none; }
+    .al-float-wrap img { transform:scale(1.14); }
+    .al-projimg:hover .al-float-wrap img { transform:scale(1.26); }
   </style>
   <script src="image-slot.js"></script>
 </helmet>
@@ -66,16 +94,16 @@
     <!-- title + photo -->
     <div style="position:absolute; left:50%; top:50%; transform:translate(-50%,-52%); width:990px; display:flex; flex-direction:column; align-items:flex-end; gap:24px;">
       <div style="position:relative; width:100%; display:flex; flex-direction:column; align-items:flex-start; gap:32px;">
-        <span style="border:1px solid #F8F9FA; border-radius:100px; padding:10px 24px; font-weight:500; font-size:18px; color:#F8F9FA; white-space:nowrap;">{{ t.hello }}</span>
-        <div style="font-weight:700; font-size:128px; line-height:100%; color:#F8F9FA; letter-spacing:-3px;">Frontend</div>
+        <div class="al-hello" style="position:relative; align-self:flex-start;"><span class="al-hello-wave" aria-hidden="true">👋</span><span style="display:inline-flex; border:1px solid #F8F9FA; border-radius:100px; padding:10px 24px; font-weight:500; font-size:18px; color:#F8F9FA; white-space:nowrap; cursor:default;">{{ t.hello }}</span></div>
+        <div onClick="{{ letterClick }}" class="al-word al-word-fe" style="font-weight:700; font-size:128px; line-height:100%; color:#F8F9FA; letter-spacing:-3px; cursor:default;"><span class="al-ltr">F</span><span class="al-ltr">r</span><span class="al-ltr">o</span><span class="al-ltr">n</span><span class="al-ltr">t</span><span class="al-ltr">e</span><span class="al-ltr">n</span><span class="al-ltr">d</span></div>
         <!-- polaroid -->
-        <div style="position:absolute; right:60px; top:-30px; width:210px; height:256px; background:#F8F9FA; transform:rotate(8deg); box-shadow:0 12px 36px rgba(0,0,0,.5); padding:14px 14px 0;">
-          <img src="assets/portrait2.jpg" alt="Alexander Lindt" style="width:182px; height:192px; object-fit:cover; object-position:50% 12%; display:block; filter:grayscale(1) contrast(1.05);">
+        <div class="al-polaroid" onClick="{{ polaroidClick }}" style="position:absolute; right:60px; top:-30px; width:210px; height:256px; background:#F8F9FA; transform:rotate(8deg); box-shadow:0 12px 36px rgba(0,0,0,.5); padding:14px 14px 0; cursor:pointer;">
+          <img src="assets/portrait2.jpg" alt="Alexander Lindt" class="al-polaroid-img" style="width:182px; height:192px; object-fit:cover; object-position:50% 12%; display:block;">
           <div style="font-family:'Kalam',cursive; font-weight:700; font-size:24px; color:#0E1013; text-align:center; line-height:48px;">Alex :)</div>
         </div>
       </div>
-      <div style="align-self:flex-end; font-weight:700; font-size:128px; line-height:100%; color:#F8F9FA; text-transform:uppercase; letter-spacing:-3px;">Developer</div>
-      <a href="#contact" style="margin-top:24px; margin-right:60px; display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:18px; text-decoration:none; background:rgba(0,0,0,.01);" style-hover="background:#3355FF; border-color:#3355FF; box-shadow:2px 4px 0px #F7C518;">{{ t.getInTouch }}</a>
+      <div onClick="{{ letterClick }}" class="al-word al-word-dev" style="align-self:flex-end; font-weight:700; font-size:128px; line-height:100%; color:#F8F9FA; text-transform:uppercase; letter-spacing:-3px; cursor:default;"><span class="al-ltr">D</span><span class="al-ltr">e</span><span class="al-ltr">v</span><span class="al-ltr">e</span><span class="al-ltr">l</span><span class="al-ltr">o</span><span class="al-ltr">p</span><span class="al-ltr">e</span><span class="al-ltr">r</span></div>
+      <a href="#contact" class="al-cta" style="margin-top:24px; margin-right:60px; display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:18px; text-decoration:none; background:rgba(0,0,0,.01);">{{ t.getInTouch }}</a>
     </div>
   </section>
 
@@ -107,7 +135,7 @@
         </div>
       </div>
       <p style="margin:0; font-size:20px; line-height:24px; font-weight:400;">{{ t.aboutText }}</p>
-      <a href="#contact" style="align-self:flex-end; display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #0E1013; border-radius:100px; box-shadow:2px 4px 0px #000000; color:#0E1013; font-weight:500; font-size:20px; text-decoration:none; background:rgba(14,16,19,.01);" style-hover="background:#F7C518; box-shadow:2px 4px 0px #3355FF;">{{ t.letsTalk }}</a>
+      <a href="#contact" class="al-cta" style="align-self:flex-end; display:inline-flex; align-items:center; justify-content:center; padding:12px 24px; border:1px solid #0E1013; border-radius:100px; box-shadow:2px 4px 0px #000000; color:#0E1013; font-weight:500; font-size:20px; text-decoration:none; background:rgba(14,16,19,.01);">{{ t.letsTalk }}</a>
     </div>
     </div>
   </section>
@@ -129,16 +157,32 @@
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:24px 40px; max-width:660px; margin:64px auto 0;">
       <sc-for list="{{ skills }}" as="skill" hint-placeholder-count="0">
         <div style="width:96px; display:flex; flex-direction:column; align-items:center; gap:8px;">
-          <div style="width:72px; height:72px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:26px; color:#F8F9FA; filter:grayscale(1) brightness(1.35); transition:filter .25s, transform .25s;" style-hover="filter:none; transform:scale(1.1);">
+          <div class="al-skill-ic" style="width:72px; height:72px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:26px; color:#F8F9FA;">
             <span style="display:inline-flex;">{{ skill.iconEl }}</span>
           </div>
           <div style="font-size:18px; color:#F8F9FA; text-align:center;">{{ skill.name }}</div>
         </div>
       </sc-for>
     </div>
-    <div style="position:absolute; right:70px; bottom:140px; width:210px; height:210px; transform:rotate(4deg); background:url('assets/sticker-peel.png'); background-size:100% 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; filter:drop-shadow(0 8px 16px rgba(0,0,0,.35));">
-      <img src="assets/peel-arrow.png" alt="" style="width:64px; height:50px; object-fit:contain;">
-      <span style="font-family:'Kalam',cursive; font-size:34px; line-height:38px; color:#F8F9FA; text-align:center;">Pull to<br>peel</span>
+    <div onClick="{{ peelClick }}" class="al-peel" style="position:absolute; right:70px; bottom:140px; width:210px; height:210px; transform:rotate(4deg); filter:drop-shadow(0 8px 16px rgba(0,0,0,.35)); cursor:pointer;">
+      <div class="al-peel-back" style="position:absolute; inset:0; border-radius:18px; overflow:hidden; background:#F5B915; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:18px; text-align:center;">
+        <div style="position:absolute; inset:0; background:repeating-linear-gradient(122deg, transparent 0 54px, rgba(240,110,60,.55) 54px 70px); opacity:.55;"></div>
+        <span style="position:relative; font-family:'Kalam',cursive; font-size:21px; line-height:1.15; color:#F8F9FA;">Also, I'm interested<br>in diving into:</span>
+        <div style="position:relative; display:flex; align-items:flex-start; justify-content:center; gap:28px;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <svg viewBox="0 0 842 596" width="42" height="42" aria-hidden="true"><g fill="none" stroke="#F8F9FA" stroke-width="34"><ellipse cx="421" cy="298" rx="320" ry="118"/><ellipse cx="421" cy="298" rx="320" ry="118" transform="rotate(60 421 298)"/><ellipse cx="421" cy="298" rx="320" ry="118" transform="rotate(120 421 298)"/></g><circle cx="421" cy="298" r="52" fill="#F8F9FA"/></svg>
+            <span style="font-family:'Kalam',cursive; font-size:16px; color:#F8F9FA;">React</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <svg viewBox="0 0 261 226" width="42" height="36" aria-hidden="true"><path fill="#F8F9FA" d="M161 0l-30.5 52.8L100 0H0l130.5 226L261 0z"/><path fill="#F8F9FA" fill-opacity=".65" d="M161 0l-30.5 52.8L100 0H52.2l78.3 135.6L208.8 0z"/></svg>
+            <span style="font-family:'Kalam',cursive; font-size:16px; color:#F8F9FA;">Vue.js</span>
+          </div>
+        </div>
+      </div>
+      <div class="al-peel-front" style="position:absolute; inset:0; border-radius:18px; background:url('assets/sticker-peel.png'); background-size:100% 100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+        <img src="assets/peel-arrow.png" alt="" style="width:64px; height:50px; object-fit:contain;">
+        <span style="font-family:'Kalam',cursive; font-size:34px; line-height:38px; color:#F8F9FA; text-align:center;">Pull to<br>peel</span>
+      </div>
     </div>
   </section>
 
@@ -157,8 +201,11 @@
       </div>
       <!-- Join -->
       <div style="width:560px; display:flex; flex-direction:column; gap:32px; flex:none;">
-        <div onClick="{{ openJoin }}" style="position:relative; width:560px; height:398px; display:flex; flex-direction:column; cursor:pointer;">
-          <img src="assets/proj-join.png" alt="Join — Kanban Project Management Tool" style="width:560px; height:337px; object-fit:contain; display:block; transform:scale(1.14); transform-origin:center;">
+        <div onClick="{{ openJoin }}" class="al-projimg" style="position:relative; width:560px; height:398px; display:flex; flex-direction:column; cursor:pointer;">
+          <div class="al-float-wrap" style="width:560px; height:337px;">
+            <img src="assets/proj-join.png" alt="Join — Kanban Project Management Tool" style="width:560px; height:337px; object-fit:contain; display:block; transform-origin:center;">
+          </div>
+          <span class="al-pd" style="right:70px; bottom:90px;">{{ t.projectDetails }}</span>
           <img src="assets/sticker-featured.png" alt="Featured Project" style="position:absolute; left:0; top:170px; width:168px; height:168px; filter:drop-shadow(0 8px 16px rgba(0,0,0,.25)); z-index:2;">
         </div>
         <div style="display:flex; flex-direction:column; gap:16px;">
@@ -169,14 +216,20 @@
     </div>
     <div style="display:flex; justify-content:space-between; gap:80px; width:100%; max-width:1440px; margin:0 auto;">
       <div onClick="{{ openPollo }}" style="width:560px; display:flex; flex-direction:column; gap:32px; flex:none; cursor:pointer;">
-        <image-slot id="thumb-pollo" shape="rounded" radius="20" src="assets/proj-pollo.jpg" placeholder="Screenshot: El Pollo Loco" style="width:560px; height:398px; display:block; box-shadow:0 8px 32px rgba(14,16,19,.14); border-radius:20px;"></image-slot>
+        <div class="al-projimg" style="width:560px; height:398px; overflow:hidden; border-radius:20px;">
+          <img src="assets/proj-pollo.jpg" alt="El Pollo Loco" style="width:560px; height:398px; object-fit:cover; display:block; box-shadow:0 8px 32px rgba(14,16,19,.14); border-radius:20px;">
+          <span class="al-pd">{{ t.projectDetails }}</span>
+        </div>
         <div style="display:flex; flex-direction:column; gap:16px;">
           <div style="font-weight:700; font-size:24px;">El Pollo Loco</div>
           <p style="margin:0; font-size:18px; line-height:22px;">{{ t.projPollo }}</p>
         </div>
       </div>
       <div onClick="{{ openAsCars }}" style="width:560px; display:flex; flex-direction:column; gap:32px; flex:none; cursor:pointer;">
-        <image-slot id="thumb-ascars" shape="rounded" radius="20" src="assets/proj-burger.jpg" placeholder="Screenshot: BurgerHouse" style="width:560px; height:398px; display:block; box-shadow:0 8px 32px rgba(14,16,19,.14); border-radius:20px;"></image-slot>
+        <div class="al-projimg" style="width:560px; height:398px; overflow:hidden; border-radius:20px;">
+          <img src="assets/proj-burger.jpg" alt="BurgerHouse" style="width:560px; height:398px; object-fit:cover; display:block; box-shadow:0 8px 32px rgba(14,16,19,.14); border-radius:20px;">
+          <span class="al-pd">{{ t.projectDetails }}</span>
+        </div>
         <div style="display:flex; flex-direction:column; gap:16px;">
           <div style="font-weight:700; font-size:24px;">BurgerHouse</div>
           <p style="margin:0; font-size:18px; line-height:22px;">{{ t.projAsCars }}</p>
@@ -196,7 +249,7 @@
     </div>
     <div style="display:flex; justify-content:center; gap:0; width:100%; max-width:1200px; margin:0 auto;">
       <sc-for list="{{ testimonials }}" as="tst" hint-placeholder-count="3">
-        <div onClick="{{ tst.selectTesti }}" style="width:512px; height:320px; box-sizing:border-box; flex:none; margin:0 -84px; background: {{ tst.cardBg }}; color:#0E1013; padding:48px 40px; display:flex; flex-direction:column; justify-content:space-between; gap:37px; cursor:pointer; opacity: {{ tst.cardOpacity }}; filter: {{ tst.cardFilter }}; transform: {{ tst.tilt }}; z-index: {{ tst.z }}; transition:transform .35s cubic-bezier(.22,1,.36,1), filter .35s ease, opacity .35s ease;">
+        <div onClick="{{ tst.selectTesti }}" onMouseEnter="{{ tst.hoverTesti }}" onMouseLeave="{{ tst.leaveTesti }}" style="width:512px; height:320px; box-sizing:border-box; flex:none; margin:0 -84px; background: {{ tst.cardBg }}; color:#0E1013; padding:48px 40px; display:flex; flex-direction:column; justify-content:space-between; gap:37px; cursor:pointer; opacity: {{ tst.cardOpacity }}; filter: {{ tst.cardFilter }}; transform: {{ tst.tilt }}; z-index: {{ tst.z }}; transition:transform .35s cubic-bezier(.22,1,.36,1), filter .35s ease, opacity .35s ease;">
           <p style="margin:0; font-size:18px; line-height:120%;">„{{ tst.quote }}“</p>
           <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:10px;">
             <div style="display:flex; flex-direction:column; gap:4px;">
@@ -232,7 +285,7 @@
         <div style="position:absolute; right:-8px; top:-56px; width:168px; height:168px; border-radius:50%; background:radial-gradient(circle at 38% 32%, #F89A6E 0%, #F87A55 55%, #E4603C 100%); box-shadow:0 8px 20px rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center; transform:rotate(-6deg); z-index:3;">
           <svg viewBox="0 0 168 168" width="168" height="168" style="position:absolute; inset:0;">
             <defs><path id="badgeArc" d="M84,84 m-64,0 a64,64 0 1,1 128,0 a64,64 0 1,1 -128,0"></path></defs>
-            <text fill="#0E1013" font-family="'Bricolage Grotesque',sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5"><textPath href="#badgeArc" startOffset="0%">Frontend Developer · Alexander Lindt · Frontend Developer · </textPath></text>
+            <text fill="#0E1013" font-family="'Bricolage Grotesque',sans-serif" font-size="12" font-weight="700" letter-spacing="1" style="text-transform:uppercase;"><textPath href="#badgeArc" startOffset="0%">Alexander Lindt Webdesign · Frontend Developer ·</textPath></text>
           </svg>
           <span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:56px; color:#0E1013; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
         </div>
@@ -255,7 +308,7 @@
             <div style="width:24px; height:24px; border:2px solid #3355FF; border-radius:4px; flex:none; display:flex; align-items:center; justify-content:center; color:#F7C518; font-weight:700; font-size:18px;">{{ privacyMark }}</div>
             <span style="font-size:15px; line-height:120%; color:#F8F9FA;">{{ t.privacy }}</span>
           </div>
-          <button style="display:inline-flex; align-items:center; justify-content:center; padding:12px 32px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:18px; background:rgba(0,0,0,.01); cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; opacity: {{ sendOpacity }};" style-hover="background:#3355FF; border-color:#3355FF;">{{ t.send }}</button>
+          <button class="al-cta" style="display:inline-flex; align-items:center; justify-content:center; padding:12px 32px; border:1px solid #F8F9FA; border-radius:100px; box-shadow:2px 4px 0px #F8F9FA; color:#F8F9FA; font-weight:500; font-size:18px; background:rgba(0,0,0,.01); cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; opacity: {{ sendOpacity }};">{{ t.send }}</button>
         </div>
       </div>
     </div>
@@ -338,14 +391,15 @@
 
   <!-- ============ PROJECT DETAIL OVERLAY ============ -->
   <sc-if value="{{ hasDetail }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; inset:0; z-index:100; background:#1D1D1D url('assets/detail-grid.png') left top / 100% 104% no-repeat; overflow:hidden; display:flex; flex-direction:column;">
+    <div style="position:fixed; inset:0; z-index:100; background:#0E1013; overflow:hidden; display:flex; flex-direction:column;">
+      <div style="position:absolute; left:0; top:0; height:100%; width:100%; z-index:0; background:url('assets/detail-grid.png') left center / 100% 100% no-repeat; pointer-events:none;"></div>
       <!-- top nav -->
-      <div style="height:80px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:19px 72px; width:100%; box-sizing:border-box; gap:32px;">
+      <div style="position:relative; z-index:1; height:80px; flex:none; display:flex; align-items:center; justify-content:space-between; padding:19px 72px; width:100%; box-sizing:border-box; gap:32px;">
         <span onClick="{{ closeDetail }}" style="font-family:'Dancing Script',cursive; font-weight:700; font-size:42px; color:#3355FF; line-height:1; display:inline-flex; cursor:pointer;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
-        <span onClick="{{ closeDetail }}" style="color:#0E1013; font-weight:700; font-size:18px; cursor:pointer;">{{ t.navAbout }}</span>
-        <span onClick="{{ closeDetail }}" style="color:#0E1013; font-weight:700; font-size:18px; cursor:pointer;">{{ t.navSkills }}</span>
-        <span onClick="{{ closeDetail }}" style="color:#F8F9FA; font-weight:700; font-size:18px; cursor:pointer;">{{ t.navProjects }}</span>
-        <span onClick="{{ closeDetail }}" style="color:#F8F9FA; font-weight:700; font-size:18px; cursor:pointer;">{{ t.navContact }}</span>
+        <a href="#about" onClick="{{ closeDetail }}" style="color:#0E1013; font-weight:700; font-size:18px; cursor:pointer; text-decoration:none;">{{ t.navAbout }}</a>
+        <a href="#skills" onClick="{{ closeDetail }}" style="color:#0E1013; font-weight:700; font-size:18px; cursor:pointer; text-decoration:none;">{{ t.navSkills }}</a>
+        <a href="#projects" onClick="{{ closeDetail }}" style="color:#F8F9FA; font-weight:700; font-size:18px; cursor:pointer; text-decoration:none;">{{ t.navProjects }}</a>
+        <a href="#contact" onClick="{{ closeDetail }}" style="color:#F8F9FA; font-weight:700; font-size:18px; cursor:pointer; text-decoration:none;">{{ t.navContact }}</a>
         <div style="display:flex; align-items:center; gap:10px;">
           <button onClick="{{ setEn }}" style="background:none; border:none; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:16px; padding:4px 2px; color: {{ enColor }};">EN</button>
           <div onClick="{{ toggleLang }}" style="width:32px; height:8px; background:#F87A55; border:1px solid #0E1013; border-radius:100px; position:relative; cursor:pointer;">
@@ -355,11 +409,11 @@
         </div>
       </div>
       <!-- back -->
-      <div style="max-width:1440px; width:100%; margin:0 auto; box-sizing:border-box; padding:0 72px;">
+      <div style="position:relative; z-index:1; max-width:1440px; width:100%; margin:0 auto; box-sizing:border-box; padding:0 72px;">
         <span onClick="{{ closeDetail }}" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:18px; color:#0E1013; cursor:pointer;"><img src="assets/arrow-back.png" alt="" style="width:24px; height:auto;">{{ goBackLabel }}</span>
       </div>
       <!-- body -->
-      <div style="flex:1; display:flex; justify-content:space-between; align-items:flex-end; gap:160px; max-width:1440px; width:100%; margin:0 auto; box-sizing:border-box; padding:32px 120px 0;">
+      <div style="position:relative; z-index:1; flex:1; display:flex; justify-content:space-between; align-items:center; gap:160px; max-width:1440px; width:100%; margin:0 auto; box-sizing:border-box; padding:32px 120px 0;">
         <!-- left -->
         <div style="width:488px; flex:none; display:flex; flex-direction:column; gap:48px;">
           <div style="display:inline-flex; flex-direction:column; gap:4px; align-self:flex-start;">
@@ -394,7 +448,7 @@
               <div style="position:absolute; right:-40px; top:calc(50% - 65px); width:130px; height:130px; border-radius:50%; background:url('assets/sticker-pollo.png'); background-size:100% 100%; filter:drop-shadow(0 8px 16px rgba(0,0,0,.35)); display:flex; align-items:center; justify-content:center; transform:rotate(15deg);">
                 <svg viewBox="0 0 130 130" width="130" height="130" style="position:absolute; inset:0;">
                   <defs><path id="polloArc" d="M65,65 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"></path></defs>
-                  <text fill="#0E1013" font-family="'Bricolage Grotesque',sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.2"><textPath href="#polloArc" startOffset="0%">- Frontend Developer - Alexander Lindt - Web-Design </textPath></text>
+                  <text fill="#0E1013" font-family="'Bricolage Grotesque',sans-serif" font-size="9" font-weight="700" letter-spacing="1" style="text-transform:uppercase;"><textPath href="#polloArc" startOffset="0%" textLength="312">Alexander Lindt Webdesign · Frontend Developer ·</textPath></text>
                 </svg>
                 <span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:42px; color:#0E1013; line-height:1; display:inline-flex; mix-blend-mode:multiply; opacity:.9;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
               </div>
@@ -407,7 +461,7 @@
         </div>
       </div>
       <!-- next project row -->
-      <div style="max-width:1440px; width:100%; margin:0 auto; box-sizing:border-box; padding:48px 72px 56px; display:flex; justify-content:flex-end;">
+      <div style="position:relative; z-index:1; max-width:1440px; width:100%; margin:0 auto; box-sizing:border-box; padding:48px 72px 56px; display:flex; justify-content:flex-end;">
         <span onClick="{{ nextDetail }}" style="display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:18px; line-height:120%; color:#F8F9FA; cursor:pointer;">{{ nextLabel }}<img src="assets/arrow-yellow.png" alt="" style="width:24px; height:24px; object-fit:contain; transform:scaleX(-1);"></span>
       </div>
     </div>
@@ -450,7 +504,18 @@ class Component extends DCLogic {
     this.setState({ detail: key });
     try { window.scrollTo(0, 0); } catch (e) {}
   }
-  closeDetail() { this.setState({ detail: null }); }
+  closeDetail() {
+    this.setState({ detail: null });
+    setTimeout(() => {
+      try {
+        const h = location.hash;
+        if (h && h.length > 1) {
+          const el = document.querySelector(h);
+          if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset);
+        }
+      } catch (e) {}
+    }, 60);
+  }
   componentDidUpdate() {
     try {
       const lock = !!this.state.detail || !!this.state.showLegal;
@@ -479,7 +544,7 @@ class Component extends DCLogic {
       growing: 'wächst weiter', stickerTeam: 'Team- projekt',
       craftEyebrow: 'Mein Handwerk', projectsTitle: 'Projekte',
       projectsText: 'Schauen Sie sich um und probieren Sie meine Projekte aus. Mein Fokus: responsive, benutzerfreundliche Anwendungen mit effizientem, sauberem Code.',
-      projJoin: 'Task-Manager nach dem Kanban-System. Aufgaben per Drag & Drop erstellen und organisieren, Nutzer und Kategorien zuweisen.',
+      projectDetails: 'Project details', projJoin: 'Task-Manager nach dem Kanban-System. Aufgaben per Drag & Drop erstellen und organisieren, Nutzer und Kategorien zuweisen.',
       projPollo: 'Jump-’n’-Run-Spiel auf Basis objektorientierter Programmierung. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu bestehen.',
       projAsCars: 'Bestell-App für ein Lieferrestaurant: Speisekarte mit Burgern, Pizza & Salaten, Warenkorb mit Live-Summe und Bestellbestätigung.',
       testiEyebrow: 'Stimmen dazu:', testiTitle: 'Das sagen Kollegen',
@@ -505,7 +570,7 @@ class Component extends DCLogic {
       growing: 'still growing', stickerTeam: 'team project',
       craftEyebrow: 'My craft', projectsTitle: 'Projects',
       projectsText: 'Take a look and interact with my projects. My focus: responsive, user-friendly applications built with efficient, clean code.',
-      projJoin: 'Task manager inspired by the Kanban system. Create and organize tasks using drag and drop, assign users and categories.',
+      projectDetails: 'Project details', projJoin: 'Task manager inspired by the Kanban system. Create and organize tasks using drag and drop, assign users and categories.',
       projPollo: 'Jump, run and throw game based on an object-oriented approach. Help Pepe find coins and tabasco salsa to fight the crazy hen.',
       projAsCars: 'Ordering app for a delivery restaurant: a menu of burgers, pizza & salads, a live-total cart and order confirmation.',
       testiEyebrow: 'In their words:', testiTitle: "Colleagues' Thoughts",
@@ -594,7 +659,9 @@ class Component extends DCLogic {
         z: isActive ? 30 : [2, 1, 0][i % 3],
         cardFilter: isActive ? 'drop-shadow(0px 18px 34px rgba(0,0,0,.30))' : 'drop-shadow(0px 0px 8px rgba(0,0,0,.16))',
         cardOpacity: 1,
-        selectTesti: () => this.setState(s => ({ activeTesti: s.activeTesti === i ? null : i }))
+        selectTesti: () => this.setState(s => ({ activeTesti: s.activeTesti === i ? null : i })),
+        hoverTesti: () => this.setState({ activeTesti: i }),
+        leaveTesti: () => this.setState(s => (s.activeTesti === i ? { activeTesti: null } : null))
       };
     });
     return {
@@ -604,6 +671,9 @@ class Component extends DCLogic {
       stopProp: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
       setDe: () => this.setLang('de'),
       setEn: () => this.setLang('en'),
+      letterClick: (e) => { const t = e.target; if (t && t.classList && t.classList.contains('al-ltr')) t.classList.toggle('is-lit'); },
+      polaroidClick: (e) => { const t = e.currentTarget; if (t && t.classList) t.classList.toggle('is-color'); },
+      peelClick: (e) => { const t = e.currentTarget; if (t && t.classList) t.classList.toggle('is-peeled'); },
       toggleLang: () => this.setLang(lang === 'de' ? 'en' : 'de'),
       knobLeft: lang === 'de' ? '17px' : '-1px',
       deColor: lang === 'de' ? '#F87A55' : 'rgba(248,249,250,.6)',
