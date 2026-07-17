@@ -513,11 +513,20 @@ class Component extends DCLogic {
   componentDidMount() {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
+        // Die Animation clippt das beobachtete Element selbst weg. Dadurch faellt die
+        // Sichtbarkeit unter die Schwelle, obwohl die Linie im Bild steht -> ohne die
+        // beiden Guards unten wuerde sich die Animation im Sekundentakt selbst neu starten.
+        const r = e.boundingClientRect, rb = e.rootBounds;
+        const outOfView = !rb || r.bottom <= rb.top || r.top >= rb.bottom;
         if (e.isIntersecting) {
-          e.target.classList.remove('run');
-          void e.target.offsetWidth;
-          e.target.classList.add('run');
-        } else {
+          // laeuft schon -> nicht neu starten (sonst Neustart bei jedem Wisch)
+          if (!e.target.classList.contains('run')) {
+            void e.target.offsetWidth;
+            e.target.classList.add('run');
+          }
+        } else if (outOfView) {
+          // nur zuruecksetzen, wenn wirklich aus dem Viewport gescrollt - nicht,
+          // wenn blos die Animation gerade wischt
           e.target.classList.remove('run');
         }
       });

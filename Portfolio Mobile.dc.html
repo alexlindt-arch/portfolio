@@ -534,8 +534,16 @@ class Component extends DCLogic {
     setTimeout(this._onScroll, 300);
     this._lineObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.remove('run'); void e.target.offsetWidth; e.target.classList.add('run'); }
-        else { e.target.classList.remove('run'); }
+        // Die Animation clippt das beobachtete Element selbst weg. Dadurch faellt die
+        // Sichtbarkeit unter die Schwelle, obwohl die Linie im Bild steht -> ohne die
+        // beiden Guards unten wuerde sich die Animation im Sekundentakt selbst neu starten.
+        const r = e.boundingClientRect, rb = e.rootBounds;
+        const outOfView = !rb || r.bottom <= rb.top || r.top >= rb.bottom;
+        if (e.isIntersecting) {
+          if (!e.target.classList.contains('run')) { void e.target.offsetWidth; e.target.classList.add('run'); }
+        } else if (outOfView) {
+          e.target.classList.remove('run');
+        }
       });
     }, { threshold: 0.9 });
     document.querySelectorAll('.al-line').forEach(el => this._lineObserver.observe(el));
