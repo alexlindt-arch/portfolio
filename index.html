@@ -26,7 +26,9 @@
     <dc-import name="Portfolio Mobile" hint-size="100%,100%"></dc-import>
   </sc-if>
   <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
-    <dc-import name="Portfolio Desktop" hint-size="100%,100%"></dc-import>
+    <div style="width:{{ deskWidth }}; zoom:{{ zoom }};">
+      <dc-import name="Portfolio Desktop" hint-size="100%,100%"></dc-import>
+    </div>
   </sc-if>
 </div>
 </x-dc>
@@ -44,8 +46,16 @@ class Component extends DCLogic {
     if (this._onResize) window.removeEventListener('resize', this._onResize);
   }
   renderVals() {
-    const isMobile = this.state.w < 900;
-    return { isMobile, isDesktop: !isMobile };
+    const w = this.state.w;
+    const isMobile = w < 900;
+    // Desktop is authored at 1440px (content 1200 + 2×120 padding). Below that it
+    // would clip on the right, so lay it out at a fixed 1440 and zoom-to-fit.
+    // At >=1440 (full desktop) it fills the viewport normally → unchanged.
+    const BASE = 1440;
+    const scaled = !isMobile && w < BASE;
+    const zoom = scaled ? w / BASE : 1;
+    const deskWidth = scaled ? BASE + 'px' : '100%';
+    return { isMobile, isDesktop: !isMobile, zoom, deskWidth };
   }
 }
 </script>
