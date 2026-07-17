@@ -59,7 +59,7 @@ portfolio/
 ## 👤 Author
 
 **Alexander Lindt** — Freelance Web Designer, Ingolstadt
-📧 alex.lindt@t-online.de
+📧 alexanderlindt16@outlook.de
 
 ---
 
