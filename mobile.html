@@ -537,8 +537,10 @@ class Component extends DCLogic {
         // Die Animation clippt das beobachtete Element selbst weg. Dadurch faellt die
         // Sichtbarkeit unter die Schwelle, obwohl die Linie im Bild steht -> ohne die
         // beiden Guards unten wuerde sich die Animation im Sekundentakt selbst neu starten.
-        const r = e.boundingClientRect, rb = e.rootBounds;
-        const outOfView = !rb || r.bottom <= rb.top || r.top >= rb.bottom;
+        // Nicht auf e.rootBounds stuetzen: die Seite laeuft live in einem cross-origin
+        // iframe (WordPress bettet GitHub Pages ein), dort ist rootBounds immer null.
+        const r = e.boundingClientRect;
+        const outOfView = r.bottom <= 0 || r.top >= window.innerHeight;
         if (e.isIntersecting) {
           if (!e.target.classList.contains('run')) { void e.target.offsetWidth; e.target.classList.add('run'); }
         } else if (outOfView) {
