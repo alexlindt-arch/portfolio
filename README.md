@@ -1,5 +1,7 @@
 # Alexander Lindt — Portfolio
 
+### 🌐 Live: **[alexanderlindtwebdesign.com](https://alexanderlindtwebdesign.com)**
+
 Personal portfolio website of **Alexander Lindt**, freelance web designer based in Ingolstadt, Germany.
 
 A single-page, statically-served portfolio with a hand-crafted paper/collage visual style — layered paper textures, cut-out stickers, hand-drawn arrows and highlights — showcasing selected client and personal projects.
@@ -26,7 +28,11 @@ No build step required — it is a static site.
 
 ## 🚀 Getting Started
 
-Clone the repository and open the page locally:
+The site is live at **[alexanderlindtwebdesign.com](https://alexanderlindtwebdesign.com)** — no setup needed to view it.
+It is also served straight from this repository via GitHub Pages:
+**[alexlindt-arch.github.io/portfolio](https://alexlindt-arch.github.io/portfolio/)**
+
+To run it locally instead, clone the repository:
 
 ```bash
 git clone https://github.com/alexlindt-arch/portfolio.git
