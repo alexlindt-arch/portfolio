@@ -17,6 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Dancing+Script:wght@600;700&family=Sacramento&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    html { scroll-behavior:smooth; }
+    .al-nav.al-nav-solid{ background:rgba(14,16,19,.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
     html, body { margin:0; padding:0; background:#0E1013; }
     * { box-sizing:border-box; }
     @keyframes al-wave { 0%{transform:rotate(0deg)} 15%{transform:rotate(18deg)} 30%{transform:rotate(-10deg)} 45%{transform:rotate(16deg)} 60%{transform:rotate(-6deg)} 75%{transform:rotate(10deg)} 100%{transform:rotate(0deg)} }
@@ -82,8 +84,8 @@
 <div style="width:100%; min-width:1280px; background:#F8F9FA; font-family:'Bricolage Grotesque',sans-serif; color:#0E1013; overflow-x:hidden;" data-screen-label="Portfolio">
 
   <!-- ============ HEADER ============ -->
-  <div style="position:fixed; top:0; left:0; right:0; height:80px; z-index:50; display:flex; align-items:center; padding:19px 72px; background:linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,0) 70%);">
-    <div style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:32px;">
+  <div class="al-nav" style="position:fixed; top:0; left:0; right:0; height:80px; z-index:50; display:flex; align-items:center; padding:19px 72px; transition:background .3s ease;">
+    <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1200px; margin:0 auto; gap:32px;">
       <a href="#hero" style="font-family:'Dancing Script',cursive; font-weight:700; font-size:42px; color:#3355FF; text-decoration:none; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></a>
       <a href="#about" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:18px; mix-blend-mode:difference;" style-hover="color:#F87A55;">{{ t.navAbout }}</a>
       <a href="#skills" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:18px; mix-blend-mode:difference;" style-hover="color:#F87A55;">{{ t.navSkills }}</a>
@@ -104,7 +106,7 @@
     <div style="position:absolute; inset:0; background:url('assets/hero-paper.webp'); background-size:100% 100%; background-repeat:no-repeat;"></div>
 
     <!-- social buttons left -->
-    <div style="position:absolute; left:72px; bottom:130px; display:flex; flex-direction:column; gap:8px; z-index:5;">
+    <div style="position:absolute; left:max(72px, calc(50% - 600px)); bottom:clamp(130px, 14vh, 300px); display:flex; flex-direction:column; gap:8px; z-index:5;">
       <a href="https://www.linkedin.com/in/alexander-lindt-2134a22a9/" target="_blank" style="width:40px; height:40px; border:1px solid #F8F9FA; border-radius:100px; display:flex; align-items:center; justify-content:center; color:#F8F9FA; text-decoration:none;" style-hover="background:#3355FF; border-color:#3355FF;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.09h4.56V23H.22V8.09zM8.34 8.09h4.37v2.04h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V23h-4.55v-7.28c0-1.74-.03-3.97-2.42-3.97-2.42 0-2.79 1.89-2.79 3.84V23H8.34V8.09z"></path></svg>
       </a>
@@ -134,7 +136,7 @@
 
   <!-- ============ 02 ABOUT ============ -->
   <section id="about" data-screen-label="02 About" style="display:flex; justify-content:center; padding:144px 120px; background:#F8F9FA;">
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:80px; width:100%; max-width:1440px; margin:0 auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:80px; width:100%; max-width:1200px; margin:0 auto;">
     <!-- ripped paper strips -->
     <div style="width:560px; display:flex; flex-direction:column; flex:none;">
       <div style="position:relative; height:152px; transform:rotate(-4deg); margin-bottom:-24px; z-index:3; background:url('assets/strip-yellow.png'); background-size:100% 100%; background-repeat:no-repeat; display:flex; align-items:center; justify-content:center; gap:16px;">
@@ -213,7 +215,7 @@
 
   <!-- ============ 04 PROJECTS ============ -->
   <section id="projects" data-screen-label="04 Projects" style="background:#F8F9FA; padding:144px 120px; display:flex; flex-direction:column; gap:88px;">
-    <div style="display:flex; justify-content:space-between; align-items:center; gap:80px; width:100%; max-width:1440px; margin:0 auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:80px; width:100%; max-width:1200px; margin:0 auto;">
       <div style="width:560px; display:flex; flex-direction:column; gap:48px; flex:none;">
         <div style="display:flex; flex-direction:column; gap:16px;">
           <div style="font-weight:500; font-size:20px; text-transform:uppercase; letter-spacing:1px;">{{ t.craftEyebrow }}</div>
@@ -239,7 +241,7 @@
         </div>
       </div>
     </div>
-    <div style="display:flex; justify-content:space-between; gap:80px; width:100%; max-width:1440px; margin:0 auto;">
+    <div style="display:flex; justify-content:space-between; gap:80px; width:100%; max-width:1200px; margin:0 auto;">
       <div onClick="{{ openPollo }}" style="width:560px; display:flex; flex-direction:column; gap:32px; flex:none; cursor:pointer;">
         <div class="al-projimg" style="width:560px; height:398px; overflow:hidden; border-radius:20px;">
           <img src="assets/proj-pollo.jpg" alt="El Pollo Loco" style="width:560px; height:398px; object-fit:cover; display:block; box-shadow:0 8px 32px rgba(14,16,19,.14); border-radius:20px;">
@@ -351,6 +353,7 @@
       <div style="display:flex; justify-content:space-between; align-items:center;">
         <div style="display:flex; gap:32px;">
           <a onClick="{{ openLegal }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ t.legal }}</a>
+          <a onClick="{{ openPrivacy }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ t.privacyTitle }}</a>
         </div>
         <a href="https://github.com/alexlindt-arch" target="_blank" style="color:#F8F9FA; text-decoration:none; font-weight:500; font-size:18px;" style-hover="color:#F87A55;">GitHub</a>
         <a href="https://www.linkedin.com/in/alexander-lindt-2134a22a9/" target="_blank" style="color:#F8F9FA; text-decoration:none; font-weight:500; font-size:18px;" style-hover="color:#F87A55;">LinkedIn</a>
@@ -366,7 +369,8 @@
       <!-- torn-paper header (image only, no solid black behind) -->
       <div style="position:relative; background:url('assets/footer-paper.webp') no-repeat center bottom; background-size:100% auto;">
         <!-- nav -->
-        <div style="height:80px; display:flex; align-items:center; justify-content:space-between; padding:19px 72px; box-sizing:border-box; gap:32px;">
+        <div style="height:80px; display:flex; align-items:center; padding:19px 72px; box-sizing:border-box;">
+        <div style="display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1200px; margin:0 auto; gap:32px;">
           <a href="#hero" onClick="{{ closeLegal }}" style="font-family:'Dancing Script',cursive; font-weight:700; font-size:42px; color:#3355FF; text-decoration:none; line-height:1; display:inline-flex; cursor:pointer;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></a>
           <a href="#about" onClick="{{ closeLegal }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ t.navAbout }}</a>
           <a href="#skills" onClick="{{ closeLegal }}" style="color:#F8F9FA; text-decoration:none; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ t.navSkills }}</a>
@@ -380,9 +384,10 @@
             <button onClick="{{ setDe }}" style="background:none; border:none; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:16px; padding:4px 2px; color: {{ deColor }};">DE</button>
           </div>
         </div>
+        </div>
         <!-- title -->
-        <div style="padding:80px 120px 180px;">
-          <h1 style="margin:0; font-weight:700; font-size:64px; line-height:100%; color:#F8F9FA;">{{ t.legal }}</h1>
+        <div style="max-width:1440px; margin:0 auto; box-sizing:border-box; padding:80px 120px 180px;">
+          <h1 style="margin:0; font-weight:700; font-size:64px; line-height:100%; color:#F8F9FA;">{{ legalTitle }}</h1>
         </div>
       </div>
 
@@ -392,17 +397,28 @@
           <span onClick="{{ closeLegal }}" style="pointer-events:auto; display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:18px; color:#0E1013; cursor:pointer;" style-hover="color:#F87A55;"><img src="assets/arrow-back.png" alt="" style="width:24px; height:auto;">{{ goBackLabel }}</span>
         </div>
 
+        <sc-if value="{{ legalShowImprint }}" hint-placeholder-val="{{ true }}">
         <h2 style="margin:0 0 16px; font-weight:700; font-size:24px; color:#3355FF;">{{ t.legalImprint }}</h2>
         <p style="margin:0 0 8px; font-size:18px; line-height:26px; color:#0E1013; font-weight:700;">Alexander Lindt</p>
-        <p style="margin:0 0 24px; font-size:16px; line-height:24px; color:#0E1013;">Zwischenäcker 1<br>85049 Ingolstadt<br>{{ t.legalPhoneLabel }}: <a href="tel:+491624115883" style="color:#0E1013;">+49 162 4115883</a><br>{{ t.legalEmailLabel }}: <a href="mailto:alexanderlindt16@outlook.de" style="color:#0E1013;">alexanderlindt16@outlook.de</a></p>
-
-        <h2 style="margin:40px 0 24px; font-weight:700; font-size:28px; color:#3355FF;">{{ t.privacyTitle }}</h2>
-        <sc-for list="{{ legalSections }}" as="sec" hint-placeholder-count="4">
+        <p style="margin:0 0 24px; font-size:18px; line-height:26px; color:#0E1013;">Zwischenäcker 1<br>85049 Ingolstadt<br>{{ t.legalPhoneLabel }}: <a href="tel:+491624115883" style="color:#0E1013;">+49 162 4115883</a><br>{{ t.legalEmailLabel }}: <a href="mailto:alexanderlindt16@outlook.de" style="color:#0E1013;">alexanderlindt16@outlook.de</a></p>
+        <sc-for list="{{ imprintSections }}" as="isec" hint-placeholder-count="4">
           <div style="margin-bottom:28px; max-width:1024px;">
-            <h3 style="margin:0 0 8px; font-weight:700; font-size:19px; color:#3355FF;">{{ sec.h }}</h3>
-            <p style="margin:0; font-size:16px; line-height:23px; color:#0E1013; white-space:pre-line;">{{ sec.p }}</p>
+            <h3 style="margin:0 0 8px; font-weight:700; font-size:24px; color:#3355FF;">{{ isec.h }}</h3>
+            <p style="margin:0; font-size:18px; line-height:26px; color:#0E1013; white-space:pre-line;">{{ isec.p }}</p>
           </div>
         </sc-for>
+        </sc-if>
+
+        <sc-if value="{{ legalShowPrivacy }}" hint-placeholder-val="{{ false }}">
+        <div>
+        <sc-for list="{{ legalSections }}" as="sec" hint-placeholder-count="4">
+          <div style="margin-bottom:28px; max-width:1024px;">
+            <h3 style="margin:0 0 8px; font-weight:700; font-size:24px; color:#3355FF;">{{ sec.h }}</h3>
+            <p style="margin:0; font-size:18px; line-height:26px; color:#0E1013; white-space:pre-line;">{{ sec.p }}</p>
+          </div>
+        </sc-for>
+        </div>
+        </sc-if>
       </div>
 
       <!-- footer -->
@@ -412,7 +428,8 @@
           <span style="font-weight:700; font-size:18px; color:#0E1013;">© Alexander Lindt 2026</span>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center;">
-          <span onClick="{{ closeLegal }}" style="font-weight:700; font-size:18px; color:#0E1013; cursor:pointer;" style-hover="color:#F87A55;">{{ t.legal }}</span>
+          <span onClick="{{ openLegal }}" style="font-weight:700; font-size:18px; color:#0E1013; cursor:pointer;" style-hover="color:#F87A55;">{{ t.legal }}</span>
+          <span onClick="{{ openPrivacy }}" style="font-weight:700; font-size:18px; color:#0E1013; cursor:pointer;" style-hover="color:#F87A55;">{{ t.privacyTitle }}</span>
           <a href="https://github.com/alexlindt-arch" target="_blank" style="font-weight:500; font-size:18px; color:#0E1013; text-decoration:none;" style-hover="color:#F87A55;">GitHub</a>
           <a href="https://www.linkedin.com/in/alexander-lindt-2134a22a9/" target="_blank" style="font-weight:500; font-size:18px; color:#0E1013; text-decoration:none;" style-hover="color:#F87A55;">LinkedIn</a>
           <a href="mailto:alexanderlindt16@outlook.de" style="font-weight:500; font-size:18px; color:#0E1013; text-decoration:none;" style-hover="color:#F87A55;">Email</a>
@@ -511,6 +528,15 @@ class Component extends DCLogic {
   ORDER = ['join', 'pollo', 'ascars'];
 
   componentDidMount() {
+    this._navScroll = () => {
+      const nav = document.querySelector('.al-nav');
+      const hero = document.getElementById('hero');
+      if (!nav || !hero) return;
+      const past = window.pageYOffset > hero.offsetHeight - 90;
+      nav.classList.toggle('al-nav-solid', past);
+    };
+    window.addEventListener('scroll', this._navScroll, { passive: true });
+    this._navScroll();
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         // Die Animation clippt das beobachtete Element selbst weg. Dadurch faellt die
@@ -567,7 +593,7 @@ class Component extends DCLogic {
 
   openDetail(key) {
     this.setState({ detail: key });
-    try { window.scrollTo(0, 0); } catch (e) {}
+    try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (e) {}
   }
   closeDetail() {
     this.setState({ detail: null });
@@ -576,7 +602,7 @@ class Component extends DCLogic {
         const h = location.hash;
         if (h && h.length > 1) {
           const el = document.querySelector(h);
-          if (el) window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset);
+          if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset, behavior: 'instant' });
         }
       } catch (e) {}
     }, 60);
@@ -594,7 +620,7 @@ class Component extends DCLogic {
   nextDetail() {
     const i = this.ORDER.indexOf(this.state.detail);
     this.setState({ detail: this.ORDER[(i + 1) % this.ORDER.length] });
-    try { window.scrollTo(0, 0); } catch (e) {}
+    try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (e) {}
   }
 
   T = {
@@ -654,6 +680,25 @@ class Component extends DCLogic {
       legalHeading: 'Information pursuant to § 5 TMG', legalContactLabel: 'Contact', legalPhoneLabel: 'Phone', legalEmailLabel: 'Email', legalClose: 'Close', privacyTitle: 'Privacy Policy', legalImprint: 'Imprint',
       detailDesc: 'Description', detailImpl: 'Implementation Details'
     }
+  };
+
+  IMPRINT_SECS = {
+    de: [
+      { h: 'Annahme der Bedingungen', p: 'Durch den Zugriff auf und die Nutzung dieses Portfolios (Produkt) erkennen Sie die folgenden Bedingungen sowie alle Richtlinien und Änderungen an, die Ihnen von Zeit zu Zeit vorgelegt werden. Ich behalte mir vor, die Bedingungen jederzeit ohne Vorankündigung zu aktualisieren oder zu ändern.' },
+      { h: 'Umfang und Eigentum des Produkts', p: 'Dieses Portfolio wurde im Rahmen eines Ausbildungsprojekts im Web-Development-Bootcamp der Developer Akademie GmbH entwickelt. Es dient Bildungszwecken und ist nicht für eine umfangreiche private oder geschäftliche Nutzung vorgesehen. Daher kann ich keine durchgehende Verfügbarkeit, Zuverlässigkeit, Genauigkeit oder sonstige Qualitätsmerkmale garantieren. Das Design des Portfolios ist Eigentum der Developer Akademie GmbH. Die unbefugte Nutzung, Vervielfältigung, Änderung, Verbreitung oder Replikation des Designs ist strengstens untersagt.' },
+      { h: 'Schutzrechte', p: 'Abgesehen vom Design, das der Developer Akademie GmbH gehört, behalte ich alle Schutzrechte am Portfolio, einschließlich aller zugehörigen urheberrechtlich geschützten Materialien, Marken und sonstiger geschützter Informationen.' },
+      { h: 'Nutzung des Produkts', p: 'Das Portfolio ist ausschließlich für rechtmäßige Zwecke bestimmt, in Übereinstimmung mit allen geltenden Gesetzen und Vorschriften. Jegliche Nutzung für illegale Aktivitäten oder um andere Personen zu belästigen, zu schädigen, zu bedrohen oder einzuschüchtern, ist strengstens untersagt.' },
+      { h: 'Haftungsausschluss', p: 'Das Portfolio wird "wie besehen" ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt. In keinem Fall hafte ich oder die Developer Akademie für direkte, indirekte, zufällige, besondere oder Folgeschäden, die sich aus der Nutzung oder Leistung des Portfolios ergeben.' },
+      { h: 'Freistellung', p: 'Sie erklären sich damit einverstanden, mich, die Developer Akademie und unsere Partner von allen Ansprüchen, Forderungen, Verlusten, Schäden, Kosten oder Verbindlichkeiten freizustellen, die sich aus Ihrer Nutzung des Portfolios und/oder Ihrem Verstoß gegen dieses Impressum ergeben. Bei Fragen kontaktieren Sie mich bitte unter alexanderlindt16@outlook.de. Stand: 26. Juli 2025' }
+    ],
+    en: [
+      { h: 'Acceptance of terms', p: 'By accessing and using this Portfolio (Product), you acknowledge and agree to the following terms and conditions, and any policies, guidelines, or amendments thereto that may be presented to you from time to time. I may update or change the terms and conditions from time to time without notice.' },
+      { h: 'Scope and ownership of the product', p: 'This Portfolio has been developed as part of a student project in a web development bootcamp at the Developer Akademie GmbH. It has an educational purpose and is not intended for extensive personal & business usage. As such, I cannot guarantee consistent availability, reliability, accuracy, or any other aspect of quality regarding this Product. The design of this Portfolio is owned by the Developer Akademie GmbH. Unauthorized use, reproduction, modification, distribution, or replication of the design is strictly prohibited.' },
+      { h: 'Proprietary rights', p: 'Aside from the design owned by Developer Akademie GmbH, I retain all proprietary rights in this Portfolio, including any associated copyrighted material, trademarks, and other proprietary information.' },
+      { h: 'Use of the product', p: 'This Portfolio is intended to be used for lawful purposes only, in accordance with all applicable laws and regulations. Any use of the Portfolio for illegal activities, or to harass, harm, threaten, or intimidate another person, is strictly prohibited.' },
+      { h: 'Disclaimer of warranties and limitation of liability', p: 'This Portfolio is provided "as is" without warranty of any kind, whether express or implied. In no event will I, or the Developer Akademie, be liable for any direct, indirect, incidental, special, consequential or exemplary damages arising out of or in connection with the use or performance of this Portfolio.' },
+      { h: 'Indemnity', p: 'You agree to indemnify, defend and hold harmless me, the Developer Akademie, and our partners, from and against any claim, demand, loss, damage, cost, or liability arising out of or relating to your use of this Portfolio and/or your breach of this Legal Notice. For any questions, please contact me at alexanderlindt16@outlook.de. Date: July 26, 2025' }
+    ]
   };
 
   PRIVACY = {
@@ -767,7 +812,7 @@ class Component extends DCLogic {
       errMsg: this.state.touched.msg && !msgOk ? t.errMsg : '',
       sendForm: () => { if (!formValid) return; this.setState({ sent: true, fName: '', fEmail: '', fMsg: '', touched: {}, privacy: false }); clearTimeout(this._sentT); this._sentT = setTimeout(() => this.setState({ sent: false }), 6000); },
       sentMsg: this.state.sent ? t.sentOk : '',
-      openLegalStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ showLegal: true }); },
+      openLegalStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ showLegal: true, legalMode: 'privacy' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (err) {} },
       detail: this.state.detail ? (this.DETAILS[lang] || this.DETAILS.de)[this.state.detail] : null,
       detailSticker: this.state.detail === 'pollo' ? 'assets/sticker-pollo-s.png' : 'assets/sticker-featured.png',
       isPollo: this.state.detail === 'pollo' || this.state.detail === 'ascars',
@@ -780,7 +825,12 @@ class Component extends DCLogic {
       closeDetail: () => this.closeDetail(),
       showLegal: this.state.showLegal,
       legalSections: (this.PRIVACY[lang] || this.PRIVACY.de),
-      openLegal: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ showLegal: true }); },
+      imprintSections: (this.IMPRINT_SECS[lang] || this.IMPRINT_SECS.de),
+      openLegal: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ showLegal: true, legalMode: 'imprint' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (err) {} },
+      openPrivacy: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ showLegal: true, legalMode: 'privacy' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (err) {} },
+      legalTitle: this.state.legalMode === 'privacy' ? t.privacyTitle : t.legal,
+      legalShowImprint: this.state.legalMode !== 'privacy',
+      legalShowPrivacy: this.state.legalMode === 'privacy',
       closeLegal: () => this.setState({ showLegal: false }),
       nextDetail: () => this.nextDetail(),
       goBackLabel: lang === 'de' ? 'Zurück' : 'Go Back',

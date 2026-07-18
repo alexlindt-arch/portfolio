@@ -18,6 +18,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Dancing+Script:wght@600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
   <script src="assets/image-slot.js"></script>
   <style>
+    html { scroll-behavior:smooth; }
+    .al-nav.al-nav-solid{ background:rgba(14,16,19,.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
     html, body { margin:0; padding:0; background:#0E1013; }
     * { box-sizing:border-box; }
     a { color:#F8F9FA; }
@@ -87,7 +89,7 @@
 <div style="width:100%; margin:0; background:#F8F9FA; font-family:'Bricolage Grotesque',sans-serif; color:#0E1013; overflow-x:hidden; position:relative;" data-screen-label="Portfolio Mobile">
 
   <!-- ============ HEADER ============ -->
-  <div style="position:fixed; top:0; left:0; width:100%; height:64px; z-index:50; display:flex; align-items:center; padding:16px; background:linear-gradient(180deg, rgba(0,0,0,.3) 0%, rgba(0,0,0,0) 70%);">
+  <div class="al-nav" style="position:fixed; top:0; left:0; width:100%; height:64px; z-index:50; display:flex; align-items:center; padding:16px; transition:background .3s ease;">
     <div style="display:flex; align-items:center; justify-content:space-between; width:100%;">
       <a href="#hero" style="text-decoration:none; line-height:1; display:inline-flex;"><span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:32px; color:#3355FF; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span></a>
       <div onClick="{{ openMenu }}" style="width:32px; height:32px; display:flex; flex-direction:column; justify-content:center; gap:5px; cursor:pointer; padding:4px;">
@@ -345,6 +347,7 @@
         </div>
         <div style="display:flex; justify-content:flex-end; gap:24px;">
           <span onClick="{{ openLegal }}" style="color:#F8F9FA; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ t.legal }}</span>
+          <span onClick="{{ openPrivacy }}" style="color:#F8F9FA; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ t.privacyTitle }}</span>
         </div>
         <div style="display:flex; justify-content:space-between; align-items:center; padding-top:8px;">
           <a href="https://github.com/alexlindt-arch" target="_blank" style="color:#F8F9FA; text-decoration:none; font-weight:500; font-size:18px;" style-hover="color:#F87A55;">GitHub</a>
@@ -406,7 +409,7 @@
 
   <!-- ============ LEGAL NOTICE OVERLAY ============ -->
   <sc-if value="{{ legalOpen }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; top:0; left:0; width:100%; height:100vh; z-index:100; background:#F8F9FA; overflow-y:auto;">
+    <div id="legal-scroll" style="position:fixed; top:0; left:0; width:100%; height:100vh; z-index:100; background:#F8F9FA; overflow-y:auto;">
       <!-- torn paper header -->
       <div style="position:relative;">
         <div style="background:#0E1013 url('assets/hero-paper-black.webp') top center / 840% auto no-repeat; padding:16px 16px 8px;">
@@ -418,13 +421,15 @@
               <div style="height:2.5px; background:#F8F9FA; border-radius:2px;"></div>
             </div>
           </div>
-          <h1 style="margin:24px 0 0; font-weight:700; font-size:clamp(38px,9.5vw,72px); line-height:120%; color:#F8F9FA;">{{ legalT.imprintH2 }}</h1>
+          <h1 style="margin:24px 0 0; font-weight:700; font-size:clamp(32px,7.5vw,54px); line-height:120%; color:#F8F9FA; overflow-wrap:break-word;">{{ legalTitleM }}</h1>
         </div>
         <div style="height:140px; background:transparent url('assets/hero-paper.webp') bottom center / 280% auto no-repeat; margin-top:-1px;"></div>
       </div>
       <!-- body -->
       <div style="padding:24px 20px 56px; display:flex; flex-direction:column; gap:24px;">
         <span onClick="{{ closeLegal }}" style="display:inline-flex; align-items:center; gap:8px; align-self:flex-start; font-weight:700; font-size:18px; color:#0E1013; cursor:pointer;"><img src="assets/arrow-back.png" alt="" style="width:24px; height:auto;">{{ legalT.back }}</span>
+        <sc-if value="{{ legalShowImprint }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:24px;">
         <div style="display:flex; flex-direction:column; gap:8px;">
           <div style="font-weight:700; font-size:23px; line-height:120%; color:#3355FF;">{{ legalT.imprintH }}</div>
           <div style="display:flex; flex-direction:column; gap:2px; font-size:16px; line-height:120%; color:#0E1013;">
@@ -443,19 +448,27 @@
             <p style="margin:0; font-size:16px; line-height:130%; text-align:justify; color:#0E1013;">{{ sec.body }}</p>
           </div>
         </sc-for>
-        <div style="font-weight:700; font-size:clamp(28px,7vw,38px); line-height:120%; color:#0E1013; margin-top:16px;">{{ legalT.privacyH }}</div>
+        </div>
+        </sc-if>
+        <sc-if value="{{ legalShowPrivacy }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:24px;">
         <sc-for list="{{ legalT.privacySections }}" as="psec" hint-placeholder-count="8">
           <div style="display:flex; flex-direction:column; gap:8px;">
             <div style="font-weight:700; font-size:23px; line-height:120%; color:#3355FF;">{{ psec.h }}</div>
             <p style="margin:0; font-size:16px; line-height:130%; text-align:justify; color:#0E1013; white-space:pre-line;">{{ psec.body }}</p>
           </div>
         </sc-for>
+        </div>
+        </sc-if>
         <div style="display:flex; flex-direction:column; gap:24px; margin-top:24px;">
           <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px;">
             <span style="font-family:'Dancing Script',cursive; font-weight:700; font-size:40px; color:#3355FF; line-height:1; display:inline-flex;">A<span style="display:inline-block; transform:scaleX(-1); margin-left:-0.1em;">L</span></span>
             <div style="display:flex; flex-direction:column; align-items:flex-end; gap:16px;">
               <span style="font-weight:700; font-size:18px; color:#0E1013;">© Alexander Lindt 2026</span>
-              <span onClick="{{ closeLegal }}" style="color:#0E1013; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ legalT.imprintH2 }}</span>
+              <div style="display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px 24px;">
+                <span onClick="{{ openLegal }}" style="color:#0E1013; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ legalT.imprintH2 }}</span>
+                <span onClick="{{ openPrivacy }}" style="color:#0E1013; font-weight:700; font-size:18px; cursor:pointer;" style-hover="color:#F87A55;">{{ legalT.privacyH }}</span>
+              </div>
             </div>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-top:8px;">
@@ -516,6 +529,15 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    this._navScroll = () => {
+      const nav = document.querySelector('.al-nav');
+      const hero = document.getElementById('hero');
+      if (!nav || !hero) return;
+      const past = window.pageYOffset > hero.offsetHeight - 70;
+      nav.classList.toggle('al-nav-solid', past);
+    };
+    window.addEventListener('scroll', this._navScroll, { passive: true });
+    this._navScroll();
     this._onScroll = () => {
       const cards = document.querySelectorAll('[data-testi-idx]');
       if (!cards.length) return;
@@ -595,11 +617,11 @@ class Component extends DCLogic {
         document.body.style.left = '';
         document.body.style.right = '';
         document.body.style.width = '';
-        window.scrollTo(0, this._scrollY || 0);
+        window.scrollTo({ top: this._scrollY || 0, behavior: 'instant' });
       }
     } catch (e) {}
   }
-  openLegal() { this.setState({ legal: true, menuOpen: false }); this.lockScroll(true); try { window.scrollTo(0, 0); } catch (e) {} }
+  openLegal(mode) { this.setState({ legal: true, legalMode: mode === 'privacy' ? 'privacy' : 'imprint', menuOpen: false }); this.lockScroll(true); try { window.scrollTo({ top: 0, behavior: 'instant' }); const c = document.getElementById('legal-scroll'); if (c) c.scrollTop = 0; } catch (e) {} }
   closeLegal() { this.setState({ legal: false }); this.lockScroll(false); }
   LEGAL = {
     de: {
@@ -652,9 +674,9 @@ class Component extends DCLogic {
     }
   };
 
-  openDetail(key) { this.setState({ detail: key, menuOpen: false }); this.lockScroll(true); try { window.scrollTo(0, 0); } catch (e) {} }
+  openDetail(key) { this.setState({ detail: key, menuOpen: false }); this.lockScroll(true); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (e) {} }
   closeDetail() { this.setState({ detail: null }); this.lockScroll(false); }
-  nextDetail() { const i = this.ORDER.indexOf(this.state.detail); this.setState({ detail: this.ORDER[(i + 1) % this.ORDER.length] }); try { window.scrollTo(0, 0); } catch (e) {} }
+  nextDetail() { const i = this.ORDER.indexOf(this.state.detail); this.setState({ detail: this.ORDER[(i + 1) % this.ORDER.length] }); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (e) {} }
 
   T = {
     de: {
@@ -679,7 +701,7 @@ class Component extends DCLogic {
       privacy: 'Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.',
       privacyPre: 'Ich habe die ', privacyLink: 'Datenschutzerklärung', privacyPost: ' gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.',
       errName: 'Bitte geben Sie Ihren Namen ein.', errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.', errMsg: 'Bitte geben Sie eine Nachricht ein.', sentOk: 'Danke! Ihre Nachricht wurde gesendet.', privacyTitle: 'Datenschutz',
-      send: 'Senden', legal: 'Impressum'
+      send: 'Senden', legal: 'Impressum', privacyTitle: 'Datenschutz'
     },
     en: {
       navAbout: 'About me', navSkills: 'Skills', navProjects: 'Projects', navContact: 'Contact',
@@ -799,7 +821,7 @@ class Component extends DCLogic {
       errMsg: this.state.touched.msg && !msgOk ? t.errMsg : '',
       sendForm: () => { if (!formValid) return; this.setState({ sent: true, fName: '', fEmail: '', fMsg: '', touched: {}, privacy: false }); clearTimeout(this._sentT); this._sentT = setTimeout(() => this.setState({ sent: false }), 6000); },
       sentMsg: this.state.sent ? t.sentOk : '',
-      openLegalStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.openLegal(); },
+      openLegalStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.openLegal('privacy'); },
       openMenu: () => { this.setState({ menuOpen: true }); this.lockScroll(true); },
       closeMenu: () => { this.setState({ menuOpen: false }); if (!this.state.detail && !this.state.legal) this.lockScroll(false); },
       navClose: () => { this.setState({ menuOpen: false, detail: null, legal: false }); this.lockScroll(false); },
@@ -813,6 +835,10 @@ class Component extends DCLogic {
       toggleHelloWave: () => { this.setState({ helloWave: false }); requestAnimationFrame(() => { this.setState({ helloWave: true }); clearTimeout(this._waveT); this._waveT = setTimeout(() => this.setState({ helloWave: false }), 3500); }); },
       toggleHeroColor: () => this.setState(s => ({ heroColor: !s.heroColor })),
       openLegal: () => this.openLegal(),
+      openPrivacy: () => this.openLegal('privacy'),
+      legalTitleM: this.state.legalMode === 'privacy' ? (this.LEGAL[lang] || this.LEGAL.de).privacyH : (this.LEGAL[lang] || this.LEGAL.de).imprintH2,
+      legalShowImprint: this.state.legalMode !== 'privacy',
+      legalShowPrivacy: this.state.legalMode === 'privacy',
       closeLegal: () => this.closeLegal(),
       legalT: this.LEGAL[lang] || this.LEGAL.de,
       setDe: () => this.setLang('de'),
