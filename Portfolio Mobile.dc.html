@@ -83,6 +83,9 @@
       .al-ptext{ font-size:21px !important; line-height:1.4 !important; }
       .al-pbtn{ font-size:20px !important; padding:14px 28px !important; }
     }
+    /* Scrollbar unsichtbar halten (soll ueberlagern, keine sichtbare Leiste) */
+    html, body { scrollbar-width: none; -ms-overflow-style: none; }
+    ::-webkit-scrollbar { width: 0; height: 0; display: none; }
   </style>
 </helmet>
 
@@ -621,7 +624,7 @@ class Component extends DCLogic {
       }
     } catch (e) {}
   }
-  openLegal(mode) { this.setState({ legal: true, legalMode: mode === 'privacy' ? 'privacy' : 'imprint', menuOpen: false }); this.lockScroll(true); try { window.scrollTo({ top: 0, behavior: 'instant' }); const c = document.getElementById('legal-scroll'); if (c) c.scrollTop = 0; } catch (e) {} }
+  openLegal(mode) { this.setState({ legal: true, legalMode: mode === 'privacy' ? 'privacy' : 'imprint', menuOpen: false }); this.lockScroll(true); try { window.scrollTo({ top: 0, behavior: 'instant' }); const c = document.getElementById('legal-scroll'); if (c) c.scrollTop = 0; requestAnimationFrame(() => { var c2 = document.getElementById('legal-scroll'); if (c2) c2.scrollTop = 0; }); } catch (e) {} }
   closeLegal() { this.setState({ legal: false }); this.lockScroll(false); }
   LEGAL = {
     de: {

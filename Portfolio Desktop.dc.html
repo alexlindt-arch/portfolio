@@ -365,7 +365,7 @@
 
   <!-- ============ LEGAL NOTICE (full page) ============ -->
   <sc-if value="{{ showLegal }}" hint-placeholder-val="{{ false }}">
-    <div style="position:fixed; inset:0; z-index:120; background:#F8F9FA; overflow-y:auto;">
+    <div id="legal-scroll" style="position:fixed; inset:0; z-index:120; background:#F8F9FA; overflow-y:auto;">
       <!-- torn-paper header (image only, no solid black behind) -->
       <div style="position:relative; background:url('assets/footer-paper.webp') no-repeat center bottom; background-size:100% auto;">
         <!-- nav -->
@@ -814,7 +814,7 @@ class Component extends DCLogic {
       errMsg: this.state.touched.msg && !msgOk ? t.errMsg : '',
       sendForm: () => { if (!formValid) return; this.setState({ sent: true, fName: '', fEmail: '', fMsg: '', touched: {}, privacy: false }); clearTimeout(this._sentT); this._sentT = setTimeout(() => this.setState({ sent: false }), 6000); },
       sentMsg: this.state.sent ? t.sentOk : '',
-      openLegalStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ showLegal: true, legalMode: 'privacy' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (err) {} },
+      openLegalStop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ showLegal: true, legalMode: 'privacy' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); requestAnimationFrame(() => { var c = document.getElementById('legal-scroll'); if (c) c.scrollTop = 0; }); } catch (err) {} },
       detail: this.state.detail ? (this.DETAILS[lang] || this.DETAILS.de)[this.state.detail] : null,
       detailSticker: this.state.detail === 'pollo' ? 'assets/sticker-pollo-s.png' : 'assets/sticker-featured.png',
       isPollo: this.state.detail === 'pollo' || this.state.detail === 'ascars',
@@ -828,8 +828,8 @@ class Component extends DCLogic {
       showLegal: this.state.showLegal,
       legalSections: (this.PRIVACY[lang] || this.PRIVACY.de),
       imprintSections: (this.IMPRINT_SECS[lang] || this.IMPRINT_SECS.de),
-      openLegal: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ showLegal: true, legalMode: 'imprint' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (err) {} },
-      openPrivacy: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ showLegal: true, legalMode: 'privacy' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (err) {} },
+      openLegal: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ showLegal: true, legalMode: 'imprint' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); requestAnimationFrame(() => { var c = document.getElementById('legal-scroll'); if (c) c.scrollTop = 0; }); } catch (err) {} },
+      openPrivacy: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ showLegal: true, legalMode: 'privacy' }); try { window.scrollTo({ top: 0, behavior: 'instant' }); requestAnimationFrame(() => { var c = document.getElementById('legal-scroll'); if (c) c.scrollTop = 0; }); } catch (err) {} },
       legalTitle: this.state.legalMode === 'privacy' ? t.privacyTitle : t.legal,
       legalShowImprint: this.state.legalMode !== 'privacy',
       legalShowPrivacy: this.state.legalMode === 'privacy',
